@@ -1,0 +1,13 @@
+0001-merge-driver-pmi8998_haptics.patch
+0002-merge-driver-pmi8998_fg.patch
+0003-merge-driver-gpi_dma.patch
+0004-arm64-configs-add-sdm845-config-fragment.patch
+0005-dts-arm64-sdm845-oneplus-common-enable-ipa.patch
+0006-drm-msm-dpu-fill-missing-details-in-hw-catalog-for-s.patch
+0007-drm-msm-dpu-always-use-mdp-device-to-scale-bandwidth.patch
+0008-msm-dsi_pll-fix-xo_board-clock-name.patch
+0009-sdm845.config-make-haptics-a-module.patch
+0010-drm-panel-sofef00-remove-reset-GPIO-handling.patch
+0011-arm64-dts-qcom-sdm845-oneplus-common-remove-panel-re.patch
+0012-dts-qcom-sdm845-oneplus-common-guard-rmtfs-mem.patch
+0013-arm64-configs-add-op6_defconfig.patch
