@@ -1,0 +1,29 @@
+From 07eee83e80b1877f873645fb3c9e522a3e673df6 Mon Sep 17 00:00:00 2001
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Tue, 20 Jul 2021 14:29:04 +0100
+Subject: [PATCH 39/44] arm64: dts: qcom: sdm845-oneplus: add ipa firmware
+ names
+
+Add the correct patch to the ipa firmware now that custom paths are
+supported.
+
+Signed-off-by: Caleb Connolly <caleb@connolly.tech>
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index ba8d0f122ce4..e24c80f73e1d 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -405,6 +405,7 @@ &ipa {
+ 	status = "okay";
+ 
+ 	memory-region = <&ipa_fw_mem>;
++	firmware-name = "qcom/sdm845/oneplus6/ipa_fws.mbn";
+ };
+ 
+ &mdss {
+-- 
+2.30.2
+

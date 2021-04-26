@@ -1,0 +1,215 @@
+From 4efb0c60dec3596f0e9bbc5d1ef4580e6305b1cf Mon Sep 17 00:00:00 2001
+From: Thara Gopinath <thara.gopinath@linaro.org>
+Date: Thu, 8 Jul 2021 08:06:55 -0400
+Subject: [PATCH 05/44] arm64: boot: dts: qcom: sdm845: Remove cpufreq cooling
+ devices for CPU thermal zones
+
+Now that Limits h/w is enabled to monitor thermal events around cpus and
+throttle the cpu frequencies, remove cpufreq cooling device for the CPU
+thermal zones which does software throttling of cpu frequencies.
+
+Signed-off-by: Thara Gopinath <thara.gopinath@linaro.org>
+Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/sdm845.dtsi | 136 ---------------------------
+ 1 file changed, 136 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+index fce5d9e67c7e..a682f178f524 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+@@ -4994,23 +4994,6 @@ cpu0_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu0_alert0>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu0_alert1>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu1-thermal {
+@@ -5038,23 +5021,6 @@ cpu1_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu1_alert0>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu1_alert1>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu2-thermal {
+@@ -5082,23 +5048,6 @@ cpu2_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu2_alert0>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu2_alert1>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu3-thermal {
+@@ -5126,23 +5075,6 @@ cpu3_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu3_alert0>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu3_alert1>;
+-					cooling-device = <&CPU0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu4-thermal {
+@@ -5170,23 +5102,6 @@ cpu4_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu4_alert0>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu4_alert1>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu5-thermal {
+@@ -5214,23 +5129,6 @@ cpu5_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu5_alert0>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu5_alert1>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu6-thermal {
+@@ -5258,23 +5156,6 @@ cpu6_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu6_alert0>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu6_alert1>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		cpu7-thermal {
+@@ -5302,23 +5183,6 @@ cpu7_crit: cpu_crit {
+ 					type = "critical";
+ 				};
+ 			};
+-
+-			cooling-maps {
+-				map0 {
+-					trip = <&cpu7_alert0>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-				map1 {
+-					trip = <&cpu7_alert1>;
+-					cooling-device = <&CPU4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&CPU7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-				};
+-			};
+ 		};
+ 
+ 		aoss0-thermal {
+-- 
+2.30.2
+

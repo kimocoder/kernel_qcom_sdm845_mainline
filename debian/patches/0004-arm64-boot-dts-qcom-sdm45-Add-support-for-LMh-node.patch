@@ -1,0 +1,62 @@
+From 60a112e9a40f425d5ca551dc53208d84b01049fc Mon Sep 17 00:00:00 2001
+From: Thara Gopinath <thara.gopinath@linaro.org>
+Date: Thu, 8 Jul 2021 08:06:54 -0400
+Subject: [PATCH 04/44] arm64: boot: dts: qcom: sdm45: Add support for LMh node
+
+Add LMh nodes for cpu cluster0 and cpu cluster1. Also add interrupt
+support in cpufreq node to capture the LMh interrupt and let the scheduler
+know of the max frequency throttling.
+
+Signed-off-by: Thara Gopinath <thara.gopinath@linaro.org>
+Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/sdm845.dtsi | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+index 1796ae8372be..fce5d9e67c7e 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+@@ -3646,6 +3646,30 @@ swm: swm@c85 {
+ 			};
+ 		};
+ 
++		lmh_cluster1: lmh@17d70800 {
++			compatible = "qcom,sdm845-lmh";
++			reg = <0 0x17d70800 0 0x401>;
++			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
++			qcom,lmh-cpu-id = <0x4>;
++			qcom,lmh-temperature-arm = <65000>;
++			qcom,lmh-temperature-low = <94500>;
++			qcom,lmh-temperature-high = <95000>;
++			interrupt-controller;
++			#interrupt-cells = <1>;
++		};
++
++		lmh_cluster0: lmh@17d78800 {
++			compatible = "qcom,sdm845-lmh";
++			reg = <0 0x17d78800 0 0x401>;
++			interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
++			qcom,lmh-cpu-id = <0x0>;
++			qcom,lmh-temperature-arm = <65000>;
++			qcom,lmh-temperature-low = <94500>;
++			qcom,lmh-temperature-high = <95000>;
++			interrupt-controller;
++			#interrupt-cells = <1>;
++		};
++
+ 		sound: sound {
+ 		};
+ 
+@@ -4911,6 +4935,8 @@ cpufreq_hw: cpufreq@17d43000 {
+ 			reg = <0 0x17d43000 0 0x1400>, <0 0x17d45800 0 0x1400>;
+ 			reg-names = "freq-domain0", "freq-domain1";
+ 
++			interrupts-extended = <&lmh_cluster0 0>, <&lmh_cluster1 0>;
++
+ 			clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GPLL0>;
+ 			clock-names = "xo", "alternate";
+ 
+-- 
+2.30.2
+

@@ -1,0 +1,62 @@
+From 346c0849389e69a0b823c30c40a5032e69c456d5 Mon Sep 17 00:00:00 2001
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Fri, 16 Jul 2021 16:48:08 +0100
+Subject: [PATCH 14/44] arm64: dts: qcom: sdm845-oneplus: enable pmi8998_fg
+
+Enable the new pmi8998 fuel gauge on the OnePlus 6 and 6T.
+
+Signed-off-by: Caleb Connolly <caleb@connolly.tech>
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi   | 7 +++++++
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts | 4 ++++
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts    | 4 ++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index 05e1f90c4f02..039333f8ef6f 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -441,6 +441,13 @@ pinconf {
+ 	};
+ };
+ 
++&pmi8998_fg {
++	status = "okay";
++
++	qcom,max-voltage-uv = <4400000>;
++	qcom,min-voltage-uv = <3600000>;
++};
++
+ &pmi8998_haptics {
+ 	status = "okay";
+ 
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+index 72842c887617..96b912c089d2 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+@@ -17,3 +17,7 @@ &display_panel {
+ 
+ 	compatible = "samsung,sofef00";
+ };
++
++&pmi8998_fg {
++	qcom,battery-capacity-ua = <3300000>;
++};
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
+index 969b36dc9e2c..079950b9ec7c 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
+@@ -18,6 +18,10 @@ &display_panel {
+ 	compatible = "samsung,s6e3fc2x01";
+ };
+ 
++&pmi8998_fg {
++	qcom,battery-capacity-ua = <3700000>;
++};
++
+ &rmi4_f12 {
+ 	touchscreen-y-mm = <148>;
+ };
+-- 
+2.30.2
+

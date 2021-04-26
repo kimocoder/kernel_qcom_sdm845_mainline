@@ -1,0 +1,24 @@
+From: "Dr. Git" <drgitx@gmail.com>
+Date: Sat, 24 Jul 2021 16:37:03 -0300
+Subject: arm64: dts: qcom: sdm845-oneplus-common: set venus firmware name
+
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index 2a72178..c007db1e 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -425,6 +425,11 @@ &mss_pil {
+ 	firmware-name = "qcom/sdm845/oneplus6/mba.mbn", "qcom/sdm845/oneplus6/modem.mbn";
+ };
+ 
++&venus {
++	status = "okay";
++	firmware-name = "qcom/sdm845/oneplus6/venus.mbn";
++};
++
+ &pm8998_gpio {
+ 	volume_down_gpio: pm8998_gpio5 {
+ 		pinconf {

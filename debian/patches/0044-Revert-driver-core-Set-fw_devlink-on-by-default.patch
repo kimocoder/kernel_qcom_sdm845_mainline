@@ -1,0 +1,26 @@
+From 6f888a2e6f858baf7c51ea602f8766a938140c4e Mon Sep 17 00:00:00 2001
+From: Joel Selvaraj <jo@jsfamily.in>
+Date: Sat, 24 Jul 2021 06:42:56 +0530
+Subject: [PATCH 44/44] Revert "driver core: Set fw_devlink=on by default"
+
+This reverts commit e590474768f1cc04852190b61dec692411b22e2a.
+---
+ drivers/base/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/base/core.c b/drivers/base/core.c
+index cadcade65825..4981d8f87fa3 100644
+--- a/drivers/base/core.c
++++ b/drivers/base/core.c
+@@ -1544,7 +1544,7 @@ static void device_links_purge(struct device *dev)
+ #define FW_DEVLINK_FLAGS_RPM		(FW_DEVLINK_FLAGS_ON | \
+ 					 DL_FLAG_PM_RUNTIME)
+ 
+-static u32 fw_devlink_flags = FW_DEVLINK_FLAGS_ON;
++static u32 fw_devlink_flags = FW_DEVLINK_FLAGS_PERMISSIVE;
+ static int __init fw_devlink_setup(char *arg)
+ {
+ 	if (!arg)
+-- 
+2.30.2
+

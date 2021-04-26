@@ -1,0 +1,39 @@
+From c9e28894015d57543b2e06a7ab663121b8c13999 Mon Sep 17 00:00:00 2001
+From: Joel Selvaraj <jo@jsfamily.in>
+Date: Fri, 25 Dec 2020 12:15:23 +0530
+Subject: [PATCH 28/44] arm64: dts: qcom: pmi8998: Add nodes for QCOM WLED
+ backlight
+
+---
+ arch/arm64/boot/dts/qcom/pmi8998.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/pmi8998.dtsi b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+index cb44a69eae3e..cf1071f1d3a8 100644
+--- a/arch/arm64/boot/dts/qcom/pmi8998.dtsi
++++ b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+@@ -68,5 +68,21 @@ pmi8998_haptics: haptics@c000 {
+ 
+ 			status = "disabled";
+ 		};
++		
++		pmi8998_wled: wled@d800 {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			compatible = "qcom,pmi8998-wled";
++			reg = <0xd800>, <0xd900>;
++			interrupts = <0x3 0xd8 0x2 IRQ_TYPE_EDGE_RISING>;
++			interrupt-names = "short";
++			qcom,current-boost-limit = <970>;
++			qcom,current-limit-microamp = <25000>;
++			qcom,ovp-millivolt = <29600>;
++			qcom,switching-freq = <800>;
++			qcom,enabled-strings = <0 1 2 3>;
++			qcom,num-strings = <4>;
++			status = "disabled";
++		};
+ 	};
+ };
+-- 
+2.30.2
+

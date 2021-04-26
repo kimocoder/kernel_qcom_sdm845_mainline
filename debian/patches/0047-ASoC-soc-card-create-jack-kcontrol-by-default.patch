@@ -1,0 +1,23 @@
+From: "Dr. Git" <drgitx@gmail.com>
+Date: Sat, 24 Jul 2021 17:12:12 -0300
+Subject: ASoC: soc-card: create jack kcontrol by default
+
+Since userspace does not want the responsibility of polling jack input devices,
+create a kcontrol by default to enable jack detection in all ASoC drivers.
+---
+ sound/soc/soc-card.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/soc-card.c b/sound/soc/soc-card.c
+index 41c586b..452bb80 100644
+--- a/sound/soc/soc-card.c
++++ b/sound/soc/soc-card.c
+@@ -69,7 +69,7 @@ int snd_soc_card_jack_new(struct snd_soc_card *card, const char *id, int type,
+ 	INIT_LIST_HEAD(&jack->jack_zones);
+ 	BLOCKING_INIT_NOTIFIER_HEAD(&jack->notifier);
+ 
+-	ret = snd_jack_new(card->snd_card, id, type, &jack->jack, false, false);
++	ret = snd_jack_new(card->snd_card, id, type, &jack->jack, true, false);
+ 	if (ret)
+ 		goto end;
+ 
