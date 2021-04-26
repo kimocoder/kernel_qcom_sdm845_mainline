@@ -1,5 +1,5 @@
-linux-sdm845 (5.12.0+sdm845-1) UNRELEASED; urgency=medium
+linux-sdm845 (5.12.0+sdm845-1) unstable; urgency=medium
 
   * Initial release
 
- -- Arnaud Ferraris <arnaud.ferraris@gmail.com>  Mon, 15 Feb 2021 10:59:56 +0100
+ -- Arnaud Ferraris <arnaud.ferraris@gmail.com>  Mon, 26 Apr 2021 12:19:35 +0200
