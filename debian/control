@@ -19,8 +19,6 @@ Rules-Requires-Root: no
 
 Package: linux-image-5.12-sdm845
 Architecture: arm64
-Pre-Depends:
- mobian-pinephone-tweaks (>= 0.52) | mobian-pinetab-tweaks (>= 0.12),
 Depends:
  initramfs-tools,
  kmod,
@@ -56,7 +54,7 @@ Package: linux-image-sdm845
 Architecture: arm64
 Section: kernel
 Depends:
- linux-image-5.12-sdm845 (>= ${binary:Version}),
+ linux-image-5.12-sdm845 (= ${binary:Version}),
 Description: Linux kernel for Qualcomm SDM845 devices
  This packages sole purpose is to depend on the latest Linux kernel and modules
  for use on Qualcomm SDM845 devices such as the OnePlus 6/6T.

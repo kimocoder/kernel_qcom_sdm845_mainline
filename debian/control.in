@@ -54,7 +54,7 @@ Package: linux-image-sdm845
 Architecture: arm64
 Section: kernel
 Depends:
- linux-image-%KREL% (>= ${binary:Version}),
+ linux-image-%KREL% (= ${binary:Version}),
 Description: Linux kernel for Qualcomm SDM845 devices
  This packages sole purpose is to depend on the latest Linux kernel and modules
  for use on Qualcomm SDM845 devices such as the OnePlus 6/6T.
