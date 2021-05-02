@@ -1,7 +1,6 @@
-From 088366e8d08fe6005ff2a0eeeb9a67bab4978c8c Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Mon, 22 Feb 2021 21:36:27 +0000
-Subject: [PATCH 08/12] msm: dsi_pll: fix xo_board clock name
+Subject: [PATCH 20/35] msm: dsi_pll: fix xo_board clock name
 
 The clock is called xo_board, but is named "xo" in this driver.
 
@@ -11,7 +10,7 @@ Signed-off-by: Caleb Connolly <caleb@connolly.tech>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/dsi/pll/dsi_pll_10nm.c b/drivers/gpu/drm/msm/dsi/pll/dsi_pll_10nm.c
-index de3b802ccd3d..f17a51ac1175 100644
+index de3b802..f17a51a 100644
 --- a/drivers/gpu/drm/msm/dsi/pll/dsi_pll_10nm.c
 +++ b/drivers/gpu/drm/msm/dsi/pll/dsi_pll_10nm.c
 @@ -663,7 +663,7 @@ static int pll_10nm_register(struct dsi_pll_10nm *pll_10nm)
@@ -23,6 +22,3 @@ index de3b802ccd3d..f17a51ac1175 100644
  		.num_parents = 1,
  		.name = vco_name,
  		.flags = CLK_IGNORE_UNUSED,
--- 
-2.30.2
-

@@ -1,0 +1,40 @@
+From: Obeida Shamoun <oshmoun100@googlemail.com>
+Date: Wed, 16 Sep 2020 19:51:59 +0200
+Subject: [PATCH 01/35] backlight: qcom-wled: Use sink_addr for sync toggle
+
+WLED3_SINK_REG_SYNC is, according to the name, a sink register offset.
+Therefore, use the sink address as base.
+
+This fixes the sync toggle on wled4, which can be
+observed by the fact that adjusting brightness works.
+
+It has no effect on wled3 because sink and ctrl base addresses are the same.
+This allows adjusting the brightness without
+having to disable then enable the module.
+
+Signed-off-by: Obeida Shamoun <oshmoun100@googlemail.com>
+Signed-off-by: Konrad Dybcio <konradybcio@gmail.com>
+---
+ drivers/video/backlight/qcom-wled.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/video/backlight/qcom-wled.c b/drivers/video/backlight/qcom-wled.c
+index 091f07e..fc8b443 100644
+--- a/drivers/video/backlight/qcom-wled.c
++++ b/drivers/video/backlight/qcom-wled.c
+@@ -336,13 +336,13 @@ static int wled3_sync_toggle(struct wled *wled)
+ 	unsigned int mask = GENMASK(wled->max_string_count - 1, 0);
+ 
+ 	rc = regmap_update_bits(wled->regmap,
+-				wled->ctrl_addr + WLED3_SINK_REG_SYNC,
++				wled->sink_addr + WLED3_SINK_REG_SYNC,
+ 				mask, mask);
+ 	if (rc < 0)
+ 		return rc;
+ 
+ 	rc = regmap_update_bits(wled->regmap,
+-				wled->ctrl_addr + WLED3_SINK_REG_SYNC,
++				wled->sink_addr + WLED3_SINK_REG_SYNC,
+ 				mask, WLED3_SINK_REG_SYNC_CLEAR);
+ 
+ 	return rc;

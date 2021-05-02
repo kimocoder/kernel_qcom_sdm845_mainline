@@ -36,7 +36,6 @@
 *.mod.c
 *.o
 *.o.*
-*.patch
 *.s
 *.so
 *.so.dbg
@@ -103,10 +102,6 @@ modules.order
 
 # stgit generated dirs
 patches-*
-
-# quilt's files
-patches
-series
 
 # cscope files
 cscope.*

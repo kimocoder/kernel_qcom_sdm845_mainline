@@ -1,0 +1,24 @@
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Fri, 30 Apr 2021 12:53:06 +0530
+Subject: [PATCH 33/35] arm64: dts: qcom: sdm845-oneplus-enchilada: adjust
+ battery capacity
+
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+index 72842c8..13b88ae 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+@@ -12,6 +12,10 @@ / {
+ 	compatible = "oneplus,enchilada", "qcom,sdm845";
+ };
+ 
++&pmi8998_fg {
++	qcom,battery-capacity-ua = <3300000>;
++};
++
+ &display_panel {
+ 	status = "okay";
+ 

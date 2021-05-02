@@ -1,7 +1,6 @@
-From 55438c222a1f4bdfd60e7c689db4288d6b1b6acb Mon Sep 17 00:00:00 2001
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Thu, 1 Apr 2021 05:05:32 +0300
-Subject: [PATCH 06/12] drm/msm/dpu: fill missing details in hw catalog for
+Date: Wed, 7 Apr 2021 18:01:54 +0300
+Subject: [PATCH 03/35] drm/msm/dpu: fill missing details in hw catalog for
  sdm845 and sm8[12]50
 
 Fill clk_inefficiency_factor, bw_inefficiency_factor and
@@ -16,7 +15,7 @@ Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
  1 file changed, 8 insertions(+)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
-index 189f3533525c..a9f74c1177dd 100644
+index 189f353..a9f74c1 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
 @@ -817,6 +817,8 @@ static const struct dpu_perf_cfg sdm845_perf_data = {
@@ -62,6 +61,3 @@ index 189f3533525c..a9f74c1177dd 100644
  };
  
  /*************************************************************
--- 
-2.30.2
-

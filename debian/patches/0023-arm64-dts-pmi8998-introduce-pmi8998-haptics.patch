@@ -1,0 +1,45 @@
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Fri, 30 Apr 2021 09:00:42 +0530
+Subject: [PATCH 23/35] arm64: dts: pmi8998: introduce pmi8998 haptics
+
+---
+ arch/arm64/boot/dts/qcom/pmi8998.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/pmi8998.dtsi b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+index d230c51..49576ca 100644
+--- a/arch/arm64/boot/dts/qcom/pmi8998.dtsi
++++ b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0
++#include <dt-bindings/input/qcom,pmi8998-haptics.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/spmi/spmi.h>
+ 
+@@ -41,5 +42,26 @@ lab: lab {
+ 				interrupt-names = "sc-err", "ocp";
+ 			};
+ 		};
++
++		pmi8998_haptics: qcom,haptics@c000 {
++			compatible = "qcom,qpnp-haptics-buffer";
++			reg = <0xc000 0x100>;
++
++			interrupts = <0x3 0xc0 0x0 IRQ_TYPE_EDGE_BOTH>,
++						 <0x3 0xc0 0x1 IRQ_TYPE_EDGE_BOTH>;
++			interrupt-names = "hap-sc-irq", "hap-play-irq"; 
++
++			qcom,wave-shape = <HAP_WAVE_SINE>;
++			qcom,play-mode = <HAP_PLAY_BUFFER>;
++
++			status = "disabled";
++
++			// Unused / unimplemented in code
++
++			// qcom,lra-res-cal-period = <32>;
++			// qcom,play-mode = "direct";
++			// qcom,actuator-type = <HAP_TYPE_LRA>;
++			// qcom,brake-pattern = <0x3 0x3 0x3 0x3>;
++		};
+ 	};
+ };

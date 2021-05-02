@@ -1,7 +1,6 @@
-From 553915b62212786eee33b10375e109ff270253f1 Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Thu, 22 Apr 2021 01:49:28 +0100
-Subject: [PATCH 12/12] dts: qcom: sdm845-oneplus-common: guard rmtfs-mem
+Subject: [PATCH 31/35] dts: qcom: sdm845-oneplus-common: guard rmtfs-mem
 
 The rmtfs_mem region is a weird one, downstream allocates it
 dynamically, and supports a "qcom,guard-memory" property which when set
@@ -28,35 +27,44 @@ A common from qcom 4.9 kernel msm_sharedmem driver:
 
  Signed-off-by: Caleb Connolly <caleb@connolly.tech>
 ---
- arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
-index c6dc4007d2ae..4eaf3d407f5e 100644
+index 8f3f5c6..2ea1958 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
-@@ -52,6 +52,10 @@ reserved-memory {
+@@ -46,19 +46,31 @@ vol-up {
+ 	};
+ 
+ 	reserved-memory {
++		/* The rmtfs_mem needs to be guarded due to "XPU limitations"
++		 * it is otherwise possible for an allocation adjacent to the
++		 * rmtfs_mem region to trigger an XPU violation, causing a crash.
++		 */
++		rmtfs_lower_guard: memory@f5c00000 {
++			no-map;
++			reg = <0 0xf5c00000 0 0x1000>;
++		};
+ 		/*
+ 		 * The rmtfs memory region in downstream is 'dynamically allocated'
  		 * but given the same address every time. Hard code it as this address is
  		 * where the modem firmware expects it to be.
  		 */
-+		rmtfs_lower_guard: memory@f5b00000 {
-+			no-map;
-+			reg = <0 0xf5b00000 0 0x1000>;
-+		};
- 		rmtfs_mem: memory@f5b01000 {
+-		rmtfs_mem: memory@f5b01000 {
++		rmtfs_mem: memory@f5c01000 {
  			compatible = "qcom,rmtfs-mem";
- 			reg = <0 0xf5b01000 0 0x200000>;
-@@ -60,6 +64,10 @@ rmtfs_mem: memory@f5b01000 {
+-			reg = <0 0xf5b01000 0 0x200000>;
++			reg = <0 0xf5c01000 0 0x200000>;
+ 			no-map;
+ 
  			qcom,client-id = <1>;
  			qcom,vmid = <15>;
  		};
-+		rmtfs_upper: memory@f5d01000 {
++		rmtfs_upper: memory@f5e01000 {
 +			no-map;
-+			reg = <0 0xf5d01000 0 0x1000>;
++			reg = <0 0xf5d01000 0 0x2000>;
 +		};
  
  		/*
  		 * It seems like reserving the old rmtfs_mem region is also needed to prevent
--- 
-2.30.2
-
