@@ -34,3 +34,4 @@
 0035-arm64-configs-add-sdm845-config-fragment.patch
 
 mobian/0001-arm64-configs-add-op6_defconfig.patch
+mobian/0002-builddeb-don-t-build-linux-libc-dev-package.patch
