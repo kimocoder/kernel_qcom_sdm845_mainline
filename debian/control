@@ -23,7 +23,7 @@ Depends:
  initramfs-tools,
  kmod,
  linux-base,
-Description: Linux 5.11 for Qualcomm SDM845 devices
+Description: Linux 5.12 for Qualcomm SDM845 devices
  The linux kernel, modules and corresponding other files for Qualcomm SDM845
  devices such as the OnePlus 6/6T.
 
@@ -33,15 +33,6 @@ Description: Linux kernel headers for Qualcomm SDM845 devices
  This package provides kernel header files for the sdm845 kernel.
  .
  This is useful for people who need to build external modules
-
-Package: linux-libc-dev
-Section: devel
-Provides: linux-kernel-headers
-Architecture: arm64
-Description: Linux support headers for userspace development
- This package provides userspaces headers from the Linux kernel.  These headers
- are used by the installed headers for GNU glibc and other system libraries.
-Multi-Arch: same
 
 Package: linux-image-5.12-sdm845-dbg
 Section: debug

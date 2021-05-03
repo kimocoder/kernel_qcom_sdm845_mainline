@@ -34,15 +34,6 @@ Description: Linux kernel headers for Qualcomm SDM845 devices
  .
  This is useful for people who need to build external modules
 
-Package: linux-libc-dev
-Section: devel
-Provides: linux-kernel-headers
-Architecture: arm64
-Description: Linux support headers for userspace development
- This package provides userspaces headers from the Linux kernel.  These headers
- are used by the installed headers for GNU glibc and other system libraries.
-Multi-Arch: same
-
 Package: linux-image-%KREL%-dbg
 Section: debug
 Architecture: arm64
