@@ -1,3 +1,4 @@
+From 45d08dcdf4c4baf13864db25d848d55748ed0ee2 Mon Sep 17 00:00:00 2001
 From: "Dr. Git" <drgitx@gmail.com>
 Date: Fri, 16 Apr 2021 23:17:29 +0000
 Subject: [PATCH 30/35] arm64: dts: qcom: sdm845-oneplus-common: remove panel
@@ -9,7 +10,7 @@ Clean up DT now that the panel driver no longer touches the reset GPIO.
  1 file changed, 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
-index 8f617f7..8f3f5c6 100644
+index 8f617f7b6d34..8f3f5c687b4a 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
 @@ -314,8 +314,6 @@ display_panel: panel@0 {
@@ -21,3 +22,6 @@ index 8f617f7..8f3f5c6 100644
  		pinctrl-names = "default";
  		pinctrl-0 = <&panel_reset_pins &panel_te_pin &panel_esd_pin>;
  
+-- 
+2.30.2
+

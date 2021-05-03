@@ -1,3 +1,4 @@
+From 464af1f8b5484330936f7b00bd57d007e453f63f Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Fri, 30 Apr 2021 08:58:31 +0530
 Subject: [PATCH 22/35] input: add support for pmi8998 based haptics driver
@@ -9,16 +10,16 @@ a partial implementation and ONLY supports SDM845 SoCs.
 To compile this driver as module, choose M here: the
 module will be called pmi8998-haptics.
 ---
- drivers/input/misc/Kconfig                       |   12 +
- drivers/input/misc/Makefile                      |    1 +
- drivers/input/misc/pmi8998-haptics.c             | 1118 ++++++++++++++++++++++
- include/dt-bindings/input/qcom,pmi8998-haptics.h |   31 +
+ drivers/input/misc/Kconfig                    |   12 +
+ drivers/input/misc/Makefile                   |    1 +
+ drivers/input/misc/pmi8998-haptics.c          | 1118 +++++++++++++++++
+ .../dt-bindings/input/qcom,pmi8998-haptics.h  |   31 +
  4 files changed, 1162 insertions(+)
  create mode 100644 drivers/input/misc/pmi8998-haptics.c
  create mode 100644 include/dt-bindings/input/qcom,pmi8998-haptics.h
 
 diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
-index ad1b6c9..06a2bd8 100644
+index ad1b6c90bc4d..06a2bd8c64f8 100644
 --- a/drivers/input/misc/Kconfig
 +++ b/drivers/input/misc/Kconfig
 @@ -164,6 +164,18 @@ config INPUT_PM8XXX_VIBRATOR
@@ -41,7 +42,7 @@ index ad1b6c9..06a2bd8 100644
  	tristate "PMIC8XXX power key support"
  	depends on MFD_PM8XXX
 diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
-index 7f202ba..2f171ac 100644
+index 7f202ba8f775..2f171ac1d59d 100644
 --- a/drivers/input/misc/Makefile
 +++ b/drivers/input/misc/Makefile
 @@ -59,6 +59,7 @@ obj-$(CONFIG_INPUT_PCF8574)		+= pcf8574_keypad.o
@@ -54,7 +55,7 @@ index 7f202ba..2f171ac 100644
  obj-$(CONFIG_INPUT_PWM_BEEPER)		+= pwm-beeper.o
 diff --git a/drivers/input/misc/pmi8998-haptics.c b/drivers/input/misc/pmi8998-haptics.c
 new file mode 100644
-index 00000000..b9f323c
+index 000000000000..b9f323cc48fa
 --- /dev/null
 +++ b/drivers/input/misc/pmi8998-haptics.c
 @@ -0,0 +1,1118 @@
@@ -1178,7 +1179,7 @@ index 00000000..b9f323c
 +MODULE_AUTHOR("Caleb Connolly <caleb@connolly.tech>");
 diff --git a/include/dt-bindings/input/qcom,pmi8998-haptics.h b/include/dt-bindings/input/qcom,pmi8998-haptics.h
 new file mode 100644
-index 00000000..68c1e7c
+index 000000000000..68c1e7c5eb55
 --- /dev/null
 +++ b/include/dt-bindings/input/qcom,pmi8998-haptics.h
 @@ -0,0 +1,31 @@
@@ -1213,3 +1214,6 @@ index 00000000..68c1e7c
 +#define HAP_AUTO_RES_ZXD_EOP	4
 +
 +#endif /* _DT_BINDINGS_QCOM_PMIC_8998_HAPTICS_ */
+-- 
+2.30.2
+

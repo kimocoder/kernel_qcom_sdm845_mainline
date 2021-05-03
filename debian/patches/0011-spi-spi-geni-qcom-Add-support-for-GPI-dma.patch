@@ -1,3 +1,4 @@
+From 60fbbbf6f98e661a0d041c3b07c0b45c1690118b Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Mon, 11 Jan 2021 20:46:48 +0530
 Subject: [PATCH 11/35] spi: spi-geni-qcom: Add support for GPI dma
@@ -8,11 +9,11 @@ support for this mode
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 Reported-by: kernel test robot <rong.a.chen@intel.com>
 ---
- drivers/spi/spi-geni-qcom.c | 395 ++++++++++++++++++++++++++++++++++++++++++--
+ drivers/spi/spi-geni-qcom.c | 395 +++++++++++++++++++++++++++++++++++-
  1 file changed, 384 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/spi/spi-geni-qcom.c b/drivers/spi/spi-geni-qcom.c
-index 881f645..d27701c 100644
+index 881f645661cc..d27701c0f890 100644
 --- a/drivers/spi/spi-geni-qcom.c
 +++ b/drivers/spi/spi-geni-qcom.c
 @@ -2,6 +2,8 @@
@@ -545,3 +546,6 @@ index 881f645..d27701c 100644
  	ret = request_irq(mas->irq, geni_spi_isr, 0, dev_name(dev), spi);
  	if (ret)
  		goto spi_geni_probe_runtime_disable;
+-- 
+2.30.2
+

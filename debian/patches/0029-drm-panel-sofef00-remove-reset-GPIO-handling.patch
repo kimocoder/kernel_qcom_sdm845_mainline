@@ -1,3 +1,4 @@
+From cfde8e2bd1ca20f2f810d208a975215e01bf5600 Mon Sep 17 00:00:00 2001
 From: "Dr. Git" <drgitx@gmail.com>
 Date: Wed, 20 Jan 2021 21:35:05 +0000
 Subject: [PATCH 29/35] drm: panel: sofef00: remove reset GPIO handling
@@ -6,11 +7,11 @@ Not required on either device, causes issues on the 6T
 
 Signed-off-by: Caleb Connolly <caleb@connolly.tech>
 ---
- drivers/gpu/drm/panel/panel-samsung-sofef00.c | 26 ++++----------------------
+ drivers/gpu/drm/panel/panel-samsung-sofef00.c | 26 +++----------------
  1 file changed, 4 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/gpu/drm/panel/panel-samsung-sofef00.c b/drivers/gpu/drm/panel/panel-samsung-sofef00.c
-index 8cb1853..cfc8b2a 100644
+index 8cb1853574bb..cfc8b2a19742 100644
 --- a/drivers/gpu/drm/panel/panel-samsung-sofef00.c
 +++ b/drivers/gpu/drm/panel/panel-samsung-sofef00.c
 @@ -23,7 +23,6 @@ struct sofef00_panel {
@@ -78,3 +79,6 @@ index 8cb1853..cfc8b2a 100644
  	ctx->dsi = dsi;
  	mipi_dsi_set_drvdata(dsi, ctx);
  
+-- 
+2.30.2
+

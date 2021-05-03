@@ -1,3 +1,4 @@
+From deb353ae2733793b9675cdecd54f982f1630487d Mon Sep 17 00:00:00 2001
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Date: Wed, 7 Apr 2021 18:01:56 +0300
 Subject: [PATCH 05/35] arm64: dts: sdm845: move bus clock to mdp node for
@@ -17,7 +18,7 @@ Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
-index 454f794a..02edc85 100644
+index 454f794af547..02edc8509c34 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
 @@ -4001,9 +4001,8 @@ mdss: mdss@ae00000 {
@@ -46,3 +47,6 @@ index 454f794a..02edc85 100644
  
  				assigned-clocks = <&dispcc DISP_CC_MDSS_MDP_CLK>,
  						  <&dispcc DISP_CC_MDSS_VSYNC_CLK>;
+-- 
+2.30.2
+

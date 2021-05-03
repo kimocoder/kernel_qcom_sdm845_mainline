@@ -1,7 +1,8 @@
+From 0d8aa4e28c47e647a0c59bad733c4c979e52748d Mon Sep 17 00:00:00 2001
 From: Amit Pundir <amit.pundir@linaro.org>
 Date: Wed, 12 Aug 2020 15:30:58 +0530
-Subject: [PATCH 02/35] FROMLIST: ath10k: qmi: Skip host capability request
- for Xiaomi Poco F1
+Subject: [PATCH 02/35] FROMLIST: ath10k: qmi: Skip host capability request for
+ Xiaomi Poco F1
 
 v2: https://lkml.org/lkml/2020/11/23/200
 
@@ -35,7 +36,7 @@ Signed-off-by: Amit Pundir <amit.pundir@linaro.org>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/wireless/ath/ath10k/qmi.c b/drivers/net/wireless/ath/ath10k/qmi.c
-index 07e478f..d196b2d 100644
+index 07e478f9a808..d196b2dd1ecb 100644
 --- a/drivers/net/wireless/ath/ath10k/qmi.c
 +++ b/drivers/net/wireless/ath/ath10k/qmi.c
 @@ -653,7 +653,9 @@ static int ath10k_qmi_host_cap_send_sync(struct ath10k_qmi *qmi)
@@ -49,3 +50,6 @@ index 07e478f..d196b2d 100644
  		ath10k_err(ar, "host capability request rejected: %d\n", resp.resp.error);
  		ret = -EINVAL;
  		goto out;
+-- 
+2.30.2
+

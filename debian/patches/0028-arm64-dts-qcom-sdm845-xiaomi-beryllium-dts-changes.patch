@@ -1,3 +1,4 @@
+From abf6e385a2c7e4acb3fb51e1bed0295612d4c2fd Mon Sep 17 00:00:00 2001
 From: Joel Selvaraj <jo@jsfamily.in>
 Date: Fri, 30 Apr 2021 11:33:24 +0530
 Subject: [PATCH 28/35] arm64: dts: qcom: sdm845-xiaomi-beryllium: dts changes
@@ -5,11 +6,11 @@ Subject: [PATCH 28/35] arm64: dts: qcom: sdm845-xiaomi-beryllium: dts changes
 Enable Touchscreen with GPI DMA, TAS2559 codec driver,
 IPA, QWLED, Fuel Gauge, Haptics.
 ---
- .../boot/dts/qcom/sdm845-xiaomi-beryllium.dts      | 99 +++++++++++++++++++++-
- 1 file changed, 95 insertions(+), 4 deletions(-)
+ .../boot/dts/qcom/sdm845-xiaomi-beryllium.dts | 114 +++++++++++++++++-
+ 1 file changed, 110 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
-index c0f5622..f24862d 100644
+index c60c8c640e17..4cb4ba2aa34d 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
 @@ -2,6 +2,7 @@
@@ -165,3 +166,28 @@ index c0f5622..f24862d 100644
  &sdhc_2 {
  	status = "okay";
  
+@@ -385,6 +476,21 @@ cpu {
+ 		};
+ 	};
+ 
++	tas2559-dai-link {
++		link-name = "Primary Spkr Playback";
++		cpu {
++			sound-dai = <&q6afedai QUATERNARY_MI2S_RX>;
++		};
++
++		platform {
++			sound-dai = <&q6routing>;
++		};
++
++		codec {
++			sound-dai =  <&tas2559_codec 0>;
++		};
++	};
++
+ 	slim-dai-link {
+ 		link-name = "SLIM Playback";
+ 		cpu {
+-- 
+2.30.2
+

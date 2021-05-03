@@ -1,3 +1,4 @@
+From 7f387b0d8955e0990432c0a84b0a3ec783aee612 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Mon, 11 Jan 2021 20:46:51 +0530
 Subject: [PATCH 14/35] arm64: dts: qcom: sdm845: enable dma for spi
@@ -12,7 +13,7 @@ Signed-off-by: Vinod Koul <vkoul@kernel.org>
  2 files changed, 15 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-db845c.dts b/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
-index c4ac6f5..068b351 100644
+index c4ac6f5dc008..068b351acd9e 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
 @@ -420,6 +420,10 @@ &gcc {
@@ -27,7 +28,7 @@ index c4ac6f5..068b351 100644
  	zap-shader {
  		memory-region = <&gpu_mem>;
 diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
-index 257c28d..2a6db43 100644
+index 257c28dc0eed..2a6db4374b97 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
 @@ -12,6 +12,7 @@
@@ -62,3 +63,6 @@ index 257c28d..2a6db43 100644
  			};
  
  			qup_spi1_default: qup-spi1-default {
+-- 
+2.30.2
+

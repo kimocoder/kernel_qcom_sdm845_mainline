@@ -1,3 +1,4 @@
+From 9c00da06cb3fe191a0b6b0683b90dbd118e1d6ae Mon Sep 17 00:00:00 2001
 From: Joel Selvaraj <joel.devbox@protonmail.com>
 Date: Wed, 17 Jun 2020 23:14:58 +0530
 Subject: [PATCH 27/35] pmOS: beryllium: Add tas2559 audio amplifier codec
@@ -10,12 +11,12 @@ tas2559: fix symmetric_rates compilation error
 ---
  sound/soc/codecs/Kconfig          |    4 +
  sound/soc/codecs/Makefile         |    5 +
- sound/soc/codecs/tas2559-codec.c  | 1079 +++++++++++++
+ sound/soc/codecs/tas2559-codec.c  | 1079 ++++++++++
  sound/soc/codecs/tas2559-codec.h  |   30 +
- sound/soc/codecs/tas2559-core.c   | 3062 +++++++++++++++++++++++++++++++++++++
- sound/soc/codecs/tas2559-core.h   |   94 ++
- sound/soc/codecs/tas2559-regmap.c | 1178 ++++++++++++++
- sound/soc/codecs/tas2559.h        |  523 +++++++
+ sound/soc/codecs/tas2559-core.c   | 3062 +++++++++++++++++++++++++++++
+ sound/soc/codecs/tas2559-core.h   |   94 +
+ sound/soc/codecs/tas2559-regmap.c | 1178 +++++++++++
+ sound/soc/codecs/tas2559.h        |  523 +++++
  sound/soc/codecs/tas2560.h        |  142 ++
  9 files changed, 6117 insertions(+)
  create mode 100644 sound/soc/codecs/tas2559-codec.c
@@ -27,7 +28,7 @@ tas2559: fix symmetric_rates compilation error
  create mode 100644 sound/soc/codecs/tas2560.h
 
 diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
-index 1c87b42..993320f 100644
+index 1c87b42606c9..993320f0b5bd 100644
 --- a/sound/soc/codecs/Kconfig
 +++ b/sound/soc/codecs/Kconfig
 @@ -285,6 +285,7 @@ config SND_SOC_ALL_CODECS
@@ -49,7 +50,7 @@ index 1c87b42..993320f 100644
  config SND_SOC_LPASS_RX_MACRO
  	depends on COMMON_CLK
 diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
-index 81357dc..c8187bf 100644
+index 81357dc62ea0..c8187bf3f0ad 100644
 --- a/sound/soc/codecs/Makefile
 +++ b/sound/soc/codecs/Makefile
 @@ -315,6 +315,11 @@ snd-soc-tas2764-objs := tas2764.o
@@ -66,7 +67,7 @@ index 81357dc..c8187bf 100644
  obj-$(CONFIG_SND_SOC_AC97_CODEC)	+= snd-soc-ac97.o
 diff --git a/sound/soc/codecs/tas2559-codec.c b/sound/soc/codecs/tas2559-codec.c
 new file mode 100644
-index 00000000..f29474f
+index 000000000000..f29474f681b9
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559-codec.c
 @@ -0,0 +1,1079 @@
@@ -1151,7 +1152,7 @@ index 00000000..f29474f
 +#endif
 diff --git a/sound/soc/codecs/tas2559-codec.h b/sound/soc/codecs/tas2559-codec.h
 new file mode 100644
-index 00000000..17093a5
+index 000000000000..17093a5f73e4
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559-codec.h
 @@ -0,0 +1,30 @@
@@ -1187,7 +1188,7 @@ index 00000000..17093a5
 +#endif /* _TAS2559_CODEC_H */
 diff --git a/sound/soc/codecs/tas2559-core.c b/sound/soc/codecs/tas2559-core.c
 new file mode 100644
-index 00000000..385cf53
+index 000000000000..385cf5308989
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559-core.c
 @@ -0,0 +1,3062 @@
@@ -4255,7 +4256,7 @@ index 00000000..385cf53
 +MODULE_LICENSE("GPL v2");
 diff --git a/sound/soc/codecs/tas2559-core.h b/sound/soc/codecs/tas2559-core.h
 new file mode 100644
-index 00000000..5afbf91
+index 000000000000..5afbf91ba605
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559-core.h
 @@ -0,0 +1,94 @@
@@ -4355,7 +4356,7 @@ index 00000000..5afbf91
 +#endif /* _TAS2559_CORE_H */
 diff --git a/sound/soc/codecs/tas2559-regmap.c b/sound/soc/codecs/tas2559-regmap.c
 new file mode 100644
-index 00000000..1e677f4
+index 000000000000..1e677f412805
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559-regmap.c
 @@ -0,0 +1,1178 @@
@@ -5539,7 +5540,7 @@ index 00000000..1e677f4
 +MODULE_LICENSE("GPL v2");
 diff --git a/sound/soc/codecs/tas2559.h b/sound/soc/codecs/tas2559.h
 new file mode 100644
-index 00000000..009687f
+index 000000000000..009687f02885
 --- /dev/null
 +++ b/sound/soc/codecs/tas2559.h
 @@ -0,0 +1,523 @@
@@ -6068,7 +6069,7 @@ index 00000000..009687f
 +#endif /* _TAS2559_H */
 diff --git a/sound/soc/codecs/tas2560.h b/sound/soc/codecs/tas2560.h
 new file mode 100644
-index 00000000..2405f8a
+index 000000000000..2405f8a7bfae
 --- /dev/null
 +++ b/sound/soc/codecs/tas2560.h
 @@ -0,0 +1,142 @@
@@ -6214,3 +6215,6 @@ index 00000000..2405f8a
 +#define	TAS2560_YRAM_END_REG		127
 +
 +#endif
+-- 
+2.30.2
+

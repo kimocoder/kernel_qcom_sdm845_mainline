@@ -1,3 +1,4 @@
+From 7473f2b575e096bc14ed763ea7de756a27f87f7f Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Fri, 30 Apr 2021 12:53:06 +0530
 Subject: [PATCH 33/35] arm64: dts: qcom: sdm845-oneplus-enchilada: adjust
@@ -8,7 +9,7 @@ Subject: [PATCH 33/35] arm64: dts: qcom: sdm845-oneplus-enchilada: adjust
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
-index 72842c8..13b88ae 100644
+index 72842c887617..13b88ae3110b 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
 @@ -12,6 +12,10 @@ / {
@@ -22,3 +23,6 @@ index 72842c8..13b88ae 100644
  &display_panel {
  	status = "okay";
  
+-- 
+2.30.2
+

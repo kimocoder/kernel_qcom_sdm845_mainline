@@ -1,3 +1,4 @@
+From 6decbc16efe09bb37eed6cc2b34b88b7b017fec9 Mon Sep 17 00:00:00 2001
 From: Joel Selvaraj <jo@jsfamily.in>
 Date: Fri, 30 Apr 2021 09:07:33 +0530
 Subject: [PATCH 25/35] arm64: dts: pmi8998: introduce pmi8998_fg driver
@@ -7,7 +8,7 @@ Subject: [PATCH 25/35] arm64: dts: pmi8998: introduce pmi8998_fg driver
  1 file changed, 11 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/pmi8998.dtsi b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
-index 49576ca..6f545a9 100644
+index 49576cab25db..6f545a980c17 100644
 --- a/arch/arm64/boot/dts/qcom/pmi8998.dtsi
 +++ b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
 @@ -19,6 +19,17 @@ pmi8998_gpio: gpios@c000 {
@@ -28,3 +29,6 @@ index 49576ca..6f545a9 100644
  	};
  
  	pmi8998_lsid1: pmic@3 {
+-- 
+2.30.2
+

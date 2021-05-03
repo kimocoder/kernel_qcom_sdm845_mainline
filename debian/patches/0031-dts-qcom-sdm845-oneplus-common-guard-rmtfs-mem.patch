@@ -1,3 +1,4 @@
+From 6516f30fc471c978aef40a11626069004769137b Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Thu, 22 Apr 2021 01:49:28 +0100
 Subject: [PATCH 31/35] dts: qcom: sdm845-oneplus-common: guard rmtfs-mem
@@ -27,11 +28,11 @@ A common from qcom 4.9 kernel msm_sharedmem driver:
 
  Signed-off-by: Caleb Connolly <caleb@connolly.tech>
 ---
- arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 16 ++++++++++++++--
+ .../boot/dts/qcom/sdm845-oneplus-common.dtsi     | 16 ++++++++++++++--
  1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
-index 8f3f5c6..2ea1958 100644
+index 8f3f5c687b4a..2ea1958488e7 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
 @@ -46,19 +46,31 @@ vol-up {
@@ -68,3 +69,6 @@ index 8f3f5c6..2ea1958 100644
  
  		/*
  		 * It seems like reserving the old rmtfs_mem region is also needed to prevent
+-- 
+2.30.2
+

@@ -1,3 +1,4 @@
+From f04d36353c57976d64b6262f657d83d37b1ed626 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Mon, 11 Jan 2021 20:46:49 +0530
 Subject: [PATCH 12/35] i2c: qcom-geni: Add support for GPI DMA
@@ -6,11 +7,11 @@ This adds capability to use GSI DMA for I2C transfers
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
- drivers/i2c/busses/i2c-qcom-geni.c | 246 ++++++++++++++++++++++++++++++++++++-
+ drivers/i2c/busses/i2c-qcom-geni.c | 246 ++++++++++++++++++++++++++++-
  1 file changed, 244 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/i2c/busses/i2c-qcom-geni.c b/drivers/i2c/busses/i2c-qcom-geni.c
-index 214b4c9..8b73349 100644
+index 214b4c913a13..8b733498fa8b 100644
 --- a/drivers/i2c/busses/i2c-qcom-geni.c
 +++ b/drivers/i2c/busses/i2c-qcom-geni.c
 @@ -12,7 +12,9 @@
@@ -324,3 +325,6 @@ index 214b4c9..8b73349 100644
  	gi2c->suspended = 0;
  	return 0;
  }
+-- 
+2.30.2
+

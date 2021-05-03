@@ -1,3 +1,4 @@
+From d7160534d420247626bdb677fd3e4bc36567b32e Mon Sep 17 00:00:00 2001
 From: Joel Selvaraj <jo@jsfamily.in>
 Date: Thu, 11 Mar 2021 01:57:52 +0530
 Subject: [PATCH 07/35] arm64: dts: qcom: sdm845-xiaomi-beryllium: Add audio
@@ -7,13 +8,18 @@ This patch adds audio support for Xiaomi Poco F1 phone. Phone's primary
 Mic and 3.5mm Headphone jack are handled through the SDM845 sound card
 and WCD9340 codec.
 
+Tested-by: Amit Pundir <amit.pundir@linaro.org>
+Reviewed-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Signed-off-by: Joel Selvaraj <jo@jsfamily.in>
 ---
- .../boot/dts/qcom/sdm845-xiaomi-beryllium.dts      | 117 +++++++++++++++++++++
- 1 file changed, 117 insertions(+)
+v2: Removed redundant MM_DL/MM_UL audio routes as suggested
+    by Stephan Gerhold.
+---
+ .../boot/dts/qcom/sdm845-xiaomi-beryllium.dts | 114 ++++++++++++++++++
+ 1 file changed, 114 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
-index 86cbae6..5b57865 100644
+index 86cbae63eaf7..71459e0f56c9 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium.dts
 @@ -5,6 +5,8 @@
@@ -54,7 +60,7 @@ index 86cbae6..5b57865 100644
  &qupv3_id_0 {
  	status = "okay";
  };
-@@ -257,6 +281,73 @@ &sdhc_2 {
+@@ -257,6 +281,70 @@ &sdhc_2 {
  	cd-gpios = <&tlmm 126 GPIO_ACTIVE_HIGH>;
  };
  
@@ -68,10 +74,7 @@ index 86cbae6..5b57865 100644
 +		"RX_BIAS", "MCLK",
 +		"AMIC1", "MIC BIAS1",
 +		"AMIC2", "MIC BIAS2",
-+		"AMIC3", "MIC BIAS3",
-+		"MM_DL1",  "MultiMedia1 Playback",
-+		"MM_DL2",  "MultiMedia2 Playback",
-+		"MultiMedia3 Capture", "MM_UL3";
++		"AMIC3", "MIC BIAS3";
 +
 +	mm1-dai-link {
 +		link-name = "MultiMedia1";
@@ -128,7 +131,7 @@ index 86cbae6..5b57865 100644
  &tlmm {
  	gpio-reserved-ranges = <0 4>, <81 4>;
  
-@@ -285,6 +376,15 @@ sdc2_card_det_n: sd-card-det-n {
+@@ -285,6 +373,15 @@ sdc2_card_det_n: sd-card-det-n {
  		function = "gpio";
  		bias-pull-up;
  	};
@@ -144,7 +147,7 @@ index 86cbae6..5b57865 100644
  };
  
  &uart6 {
-@@ -345,6 +445,23 @@ &usb_1_qmpphy {
+@@ -345,6 +442,23 @@ &usb_1_qmpphy {
  	vdda-pll-supply = <&vreg_l1a_0p875>;
  };
  
@@ -168,3 +171,6 @@ index 86cbae6..5b57865 100644
  &wifi {
  	status = "okay";
  
+-- 
+2.30.2
+

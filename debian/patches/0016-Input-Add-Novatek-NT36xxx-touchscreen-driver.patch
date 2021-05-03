@@ -1,3 +1,4 @@
+From 7603563f3b7fc81e0e2a5b675449081910705e8d Mon Sep 17 00:00:00 2001
 From: AngeloGioacchino Del Regno <kholk11@gmail.com>
 Date: Wed, 28 Oct 2020 23:13:01 +0100
 Subject: [PATCH 16/35] Input: Add Novatek NT36xxx touchscreen driver
@@ -25,14 +26,14 @@ Signed-off-by: AngeloGioacchino Del Regno <kholk11@gmail.com>
 ---
  drivers/input/touchscreen/Kconfig   |  12 +
  drivers/input/touchscreen/Makefile  |   1 +
- drivers/input/touchscreen/nt36xxx.c | 894 ++++++++++++++++++++++++++++++++++++
- drivers/input/touchscreen/nt36xxx.h | 122 +++++
+ drivers/input/touchscreen/nt36xxx.c | 894 ++++++++++++++++++++++++++++
+ drivers/input/touchscreen/nt36xxx.h | 122 ++++
  4 files changed, 1029 insertions(+)
  create mode 100644 drivers/input/touchscreen/nt36xxx.c
  create mode 100644 drivers/input/touchscreen/nt36xxx.h
 
 diff --git a/drivers/input/touchscreen/Kconfig b/drivers/input/touchscreen/Kconfig
-index 529614d..76331c4 100644
+index 529614d364fe..76331c49dfcc 100644
 --- a/drivers/input/touchscreen/Kconfig
 +++ b/drivers/input/touchscreen/Kconfig
 @@ -606,6 +606,18 @@ config TOUCHSCREEN_MTOUCH
@@ -55,7 +56,7 @@ index 529614d..76331c4 100644
  	tristate "Freescale i.MX6UL touchscreen controller"
  	depends on ((OF && GPIOLIB) || COMPILE_TEST) && HAS_IOMEM
 diff --git a/drivers/input/touchscreen/Makefile b/drivers/input/touchscreen/Makefile
-index 6233541..d157ac8 100644
+index 6233541e9173..d157ac8c85b5 100644
 --- a/drivers/input/touchscreen/Makefile
 +++ b/drivers/input/touchscreen/Makefile
 @@ -61,6 +61,7 @@ obj-$(CONFIG_TOUCHSCREEN_MIGOR)		+= migor_ts.o
@@ -68,7 +69,7 @@ index 6233541..d157ac8 100644
  obj-$(CONFIG_TOUCHSCREEN_IPAQ_MICRO)	+= ipaq-micro-ts.o
 diff --git a/drivers/input/touchscreen/nt36xxx.c b/drivers/input/touchscreen/nt36xxx.c
 new file mode 100644
-index 00000000..a572d2b
+index 000000000000..a572d2b87464
 --- /dev/null
 +++ b/drivers/input/touchscreen/nt36xxx.c
 @@ -0,0 +1,894 @@
@@ -968,7 +969,7 @@ index 00000000..a572d2b
 +MODULE_AUTHOR("AngeloGioacchino Del Regno <kholk11@gmail.com>");
 diff --git a/drivers/input/touchscreen/nt36xxx.h b/drivers/input/touchscreen/nt36xxx.h
 new file mode 100644
-index 00000000..6f03dfb4
+index 000000000000..6f03dfb45656
 --- /dev/null
 +++ b/drivers/input/touchscreen/nt36xxx.h
 @@ -0,0 +1,122 @@
@@ -1094,3 +1095,6 @@ index 00000000..6f03dfb4
 +};
 +
 +#endif
+-- 
+2.30.2
+

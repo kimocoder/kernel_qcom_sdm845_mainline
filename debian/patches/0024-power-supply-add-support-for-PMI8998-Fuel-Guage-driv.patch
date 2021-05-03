@@ -1,3 +1,4 @@
+From 71ea4a68c4c25afc290640c6bd4cfbed4ade1618 Mon Sep 17 00:00:00 2001
 From: Caleb Connolly <caleb@connolly.tech>
 Date: Sat, 17 Apr 2021 20:14:05 +0100
 Subject: [PATCH 24/35] power: supply: add support for PMI8998 Fuel Guage
@@ -12,14 +13,14 @@ Co-authored-by: Joel Selvaraj <jo@jsfamily.in>
 ---
  drivers/power/supply/Kconfig      |  10 +
  drivers/power/supply/Makefile     |   1 +
- drivers/power/supply/pmi8998_fg.c | 696 ++++++++++++++++++++++++++++++++++++++
- drivers/power/supply/pmi8998_fg.h | 134 ++++++++
+ drivers/power/supply/pmi8998_fg.c | 696 ++++++++++++++++++++++++++++++
+ drivers/power/supply/pmi8998_fg.h | 134 ++++++
  4 files changed, 841 insertions(+)
  create mode 100644 drivers/power/supply/pmi8998_fg.c
  create mode 100644 drivers/power/supply/pmi8998_fg.h
 
 diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 006b95e..3e035da 100644
+index 006b95eca673..3e035dade275 100644
 --- a/drivers/power/supply/Kconfig
 +++ b/drivers/power/supply/Kconfig
 @@ -801,4 +801,14 @@ config BATTERY_ACER_A500
@@ -38,7 +39,7 @@ index 006b95e..3e035da 100644
 +
  endif # POWER_SUPPLY
 diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index 5e5fdbb..8b48634 100644
+index 5e5fdbbef531..8b48634da203 100644
 --- a/drivers/power/supply/Makefile
 +++ b/drivers/power/supply/Makefile
 @@ -101,3 +101,4 @@ obj-$(CONFIG_CHARGER_BD99954)	+= bd99954-charger.o
@@ -48,7 +49,7 @@ index 5e5fdbb..8b48634 100644
 +obj-$(CONFIG_BATTERY_PMI8998_FG)	+= pmi8998_fg.o
 diff --git a/drivers/power/supply/pmi8998_fg.c b/drivers/power/supply/pmi8998_fg.c
 new file mode 100644
-index 00000000..1aea6ea
+index 000000000000..1aea6eaf30f9
 --- /dev/null
 +++ b/drivers/power/supply/pmi8998_fg.c
 @@ -0,0 +1,696 @@
@@ -750,7 +751,7 @@ index 00000000..1aea6ea
 +MODULE_LICENSE("GPL v2");
 diff --git a/drivers/power/supply/pmi8998_fg.h b/drivers/power/supply/pmi8998_fg.h
 new file mode 100644
-index 00000000..b44f88b
+index 000000000000..b44f88bc9395
 --- /dev/null
 +++ b/drivers/power/supply/pmi8998_fg.h
 @@ -0,0 +1,134 @@
@@ -888,3 +889,6 @@ index 00000000..b44f88b
 +	int health;
 +	int status;
 +};
+-- 
+2.30.2
+

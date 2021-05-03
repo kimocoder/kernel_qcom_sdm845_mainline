@@ -1,3 +1,4 @@
+From 26a625968bb5637e9aaefe63a4d2b5aabfb7b545 Mon Sep 17 00:00:00 2001
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Date: Wed, 7 Apr 2021 18:01:55 +0300
 Subject: [PATCH 04/35] drm/msm/dpu: always use mdp device to scale bandwidth
@@ -12,11 +13,11 @@ Tested on RB3 (SDM845) and RB5 (SM8250).
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
  drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c  |  3 +-
- drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c | 51 +-------------------------------
+ drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c | 51 +-----------------------
  2 files changed, 2 insertions(+), 52 deletions(-)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c
-index 85f2c35..fb061e6 100644
+index 85f2c3564c96..fb061e666faa 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c
 @@ -933,8 +933,7 @@ static int dpu_kms_hw_init(struct msm_kms *kms)
@@ -30,7 +31,7 @@ index 85f2c35..fb061e6 100644
  	pm_runtime_get_sync(&dpu_kms->pdev->dev);
  
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c
-index cd40788..3416e96 100644
+index cd4078807db1..3416e9617ee9 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c
 @@ -31,40 +31,8 @@ struct dpu_mdss {
@@ -140,3 +141,6 @@ index cd40788..3416e96 100644
  	return ret;
  
  irq_error:
+-- 
+2.30.2
+

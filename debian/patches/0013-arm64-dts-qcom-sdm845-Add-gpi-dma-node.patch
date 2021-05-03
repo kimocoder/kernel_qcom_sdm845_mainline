@@ -1,3 +1,4 @@
+From 4ea93350ad0c55350b4ae6007466d4d173368a72 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Mon, 11 Jan 2021 20:46:50 +0530
 Subject: [PATCH 13/35] arm64: dts: qcom: sdm845: Add gpi dma node
@@ -6,11 +7,11 @@ This add the device node for gpi dma0 instances found in sdm845.
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
- arch/arm64/boot/dts/qcom/sdm845.dtsi | 46 ++++++++++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/qcom/sdm845.dtsi | 46 ++++++++++++++++++++++++++++
  1 file changed, 46 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
-index 02edc85..257c28d 100644
+index 02edc8509c34..257c28dc0eed 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
 @@ -1114,6 +1114,29 @@ opp-128000000 {
@@ -73,3 +74,6 @@ index 02edc85..257c28d 100644
  		qupv3_id_1: geniqup@ac0000 {
  			compatible = "qcom,geni-se-qup";
  			reg = <0 0x00ac0000 0 0x6000>;
+-- 
+2.30.2
+

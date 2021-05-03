@@ -1,3 +1,4 @@
+From 27f2994fda30c8039b615641310db0f5eeceecae Mon Sep 17 00:00:00 2001
 From: Obeida Shamoun <oshmoun100@googlemail.com>
 Date: Wed, 16 Sep 2020 19:51:59 +0200
 Subject: [PATCH 01/35] backlight: qcom-wled: Use sink_addr for sync toggle
@@ -19,7 +20,7 @@ Signed-off-by: Konrad Dybcio <konradybcio@gmail.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/video/backlight/qcom-wled.c b/drivers/video/backlight/qcom-wled.c
-index 091f07e..fc8b443 100644
+index 091f07e7c145..fc8b443d10fd 100644
 --- a/drivers/video/backlight/qcom-wled.c
 +++ b/drivers/video/backlight/qcom-wled.c
 @@ -336,13 +336,13 @@ static int wled3_sync_toggle(struct wled *wled)
@@ -38,3 +39,6 @@ index 091f07e..fc8b443 100644
  				mask, WLED3_SINK_REG_SYNC_CLEAR);
  
  	return rc;
+-- 
+2.30.2
+
