@@ -1,3 +1,10 @@
+linux-sdm845 (5.12.0+sdm845-1.2) unstable; urgency=medium
+
+  * Update patches from WIP branch
+  * d/patches: don't build linux-libc-dev package
+
+ -- Arnaud Ferraris <arnaud.ferraris@gmail.com>  Mon, 03 May 2021 02:39:44 +0200
+
 linux-sdm845 (5.12.0+sdm845-1.1) unstable; urgency=medium
 
   * d/control: fix dependencies
