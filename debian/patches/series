@@ -1,4 +1,3 @@
-0001-backlight-qcom-wled-Use-sink_addr-for-sync-toggle.patch
 0002-FROMLIST-ath10k-qmi-Skip-host-capability-request-for.patch
 0003-drm-msm-dpu-fill-missing-details-in-hw-catalog-for-s.patch
 0004-drm-msm-dpu-always-use-mdp-device-to-scale-bandwidth.patch
