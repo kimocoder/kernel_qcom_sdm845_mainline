@@ -1,3 +1,12 @@
+linux-sdm845 (5.12.4+sdm845-3) unstable; urgency=medium
+
+  * Rebase on 5.12.4
+  * d/patches: add latest patches
+  * d/patches: add missing options to defconfig
+  * d/patches: remove upstreamed patch for 5.12.4 rebase
+
+ -- Arnaud Ferraris <arnaud.ferraris@gmail.com>  Mon, 17 May 2021 02:17:00 +0200
+
 linux-sdm845 (5.12.0+sdm845-2) unstable; urgency=medium
 
   * d/control: remove linux-libc-dev
