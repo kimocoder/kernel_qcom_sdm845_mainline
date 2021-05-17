@@ -32,6 +32,16 @@
 0033-arm64-dts-qcom-sdm845-oneplus-enchilada-adjust-batte.patch
 0034-arm64-dts-qcom-sdm845-oneplus-fajita-adjust-battery-.patch
 0035-arm64-configs-add-sdm845-config-fragment.patch
+0036-gpu-drm-panel-Add-EBBG-FT8719-panel-driver.patch
+0037-input-touchscreen-Add-Focaltech-FT8719-touchscreen-d.patch
+0038-dts-beryllium-split-devicetree-and-add-required-kern.patch
+0039-thermal-qcom-Introduce-SCM-calls-in-Qualcomm-limits-.patch
+0040-thermal-qcom-Add-initial-support-for-LMh-driver.patch
+0041-arm64-dts-sdm45-Add-support-for-LMh-node.patch
+0042-arm64-config-introduce-LMH-Kconfig-and-enable-the-dr.patch
+0043-TEMP-dts-sdm845-oneplus-fix-guard-mem.patch
+0044-Add-binfmt_misc-to-defconfig.patch
+0045-input-touchscreen-ft8719-fix-module-not-probing.patch
 
 mobian/0001-arm64-configs-add-op6_defconfig.patch
 mobian/0002-builddeb-don-t-build-linux-libc-dev-package.patch

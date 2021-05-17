@@ -1,0 +1,123 @@
+From 58d384437cab1a2a8bdf1762118d5553ba03dd9f Mon Sep 17 00:00:00 2001
+From: Thara Gopinath <thara.gopinath@linaro.org>
+Date: Thu, 17 Oct 2019 15:45:25 -0700
+Subject: [PATCH 39/45] thermal: qcom: Introduce SCM calls in Qualcomm limits
+ management hardware
+
+Introduce SCM calls to configure limits management hardware
+
+Signed-off-by: Thara Gopinath <thara.gopinath@linaro.org>
+---
+ drivers/firmware/qcom_scm.c | 51 +++++++++++++++++++++++++++++++++++++
+ drivers/firmware/qcom_scm.h |  4 +++
+ include/linux/qcom_scm.h    | 11 ++++++++
+ 3 files changed, 66 insertions(+)
+
+diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
+index f57779fc7ee9..3699d4388370 100644
+--- a/drivers/firmware/qcom_scm.c
++++ b/drivers/firmware/qcom_scm.c
+@@ -1137,6 +1137,57 @@ int qcom_scm_qsmmu500_wait_safe_toggle(bool en)
+ }
+ EXPORT_SYMBOL(qcom_scm_qsmmu500_wait_safe_toggle);
+ 
++bool qcom_scm_limit_dcvsh_available(void)
++{
++	return __qcom_scm_is_call_available(__scm->dev, QCOM_SCM_SVC_LMH, QCOM_SCM_LMH_LIMIT_DCVSH);
++}
++EXPORT_SYMBOL(qcom_scm_limit_dcvsh_available);
++
++int qcom_scm_lmh_limit_profile_change(u32 profile_id)
++{
++	struct qcom_scm_desc desc = {
++		.svc = QCOM_SCM_SVC_LMH,
++		.cmd = QCOM_SCM_LMH_LIMIT_PROFILE_CHANGE,
++		.arginfo = QCOM_SCM_ARGS(1, QCOM_SCM_VAL),
++		.args[0] = profile_id,
++		.owner = ARM_SMCCC_OWNER_SIP,
++	};
++
++	return qcom_scm_call(__scm->dev, &desc, NULL);
++}
++EXPORT_SYMBOL(qcom_scm_lmh_limit_profile_change);
++
++int qcom_scm_lmh_limit_dcvsh(u32 *payload, u32 payload_size,
++			       u64 limit_node, u32 node_id, u64 version)
++{
++	dma_addr_t payload_phys;
++	void *payload_buf;
++
++	struct qcom_scm_desc desc = {
++		.svc = QCOM_SCM_SVC_LMH,
++		.cmd = QCOM_SCM_LMH_LIMIT_DCVSH,
++		.arginfo = QCOM_SCM_ARGS(5, QCOM_SCM_RO, QCOM_SCM_VAL, QCOM_SCM_VAL,
++					QCOM_SCM_VAL, QCOM_SCM_VAL),
++		.args[1] = payload_size,
++		.args[2] = limit_node,
++		.args[3] = node_id,
++		.args[4] = version,
++		.owner = ARM_SMCCC_OWNER_SIP,
++	};
++
++	payload_buf = dma_alloc_coherent(__scm->dev, payload_size, &payload_phys,
++				       GFP_KERNEL);
++	if (!payload_buf) {
++		dev_err(__scm->dev, "Allocation of payload data buffer failed.\n");
++		return -ENOMEM;
++	}
++	memcpy(payload_buf, payload, payload_size);
++
++	desc.args[0] = payload_phys;
++	return qcom_scm_call(__scm->dev, &desc, NULL);
++}
++EXPORT_SYMBOL(qcom_scm_lmh_limit_dcvsh);
++
+ static int qcom_scm_find_dload_address(struct device *dev, u64 *addr)
+ {
+ 	struct device_node *tcsr;
+diff --git a/drivers/firmware/qcom_scm.h b/drivers/firmware/qcom_scm.h
+index 95cd1ac30ab0..cc8fa58149cb 100644
+--- a/drivers/firmware/qcom_scm.h
++++ b/drivers/firmware/qcom_scm.h
+@@ -111,6 +111,10 @@ extern int scm_legacy_call(struct device *dev, const struct qcom_scm_desc *desc,
+ #define QCOM_SCM_SVC_HDCP		0x11
+ #define QCOM_SCM_HDCP_INVOKE		0x01
+ 
++#define QCOM_SCM_SVC_LMH			0x13
++#define QCOM_SCM_LMH_LIMIT_PROFILE_CHANGE 	0x01
++#define QCOM_SCM_LMH_LIMIT_DCVSH		0x10
++
+ #define QCOM_SCM_SVC_SMMU_PROGRAM		0x15
+ #define QCOM_SCM_SMMU_CONFIG_ERRATA1		0x03
+ #define QCOM_SCM_SMMU_CONFIG_ERRATA1_CLIENT_ALL	0x02
+diff --git a/include/linux/qcom_scm.h b/include/linux/qcom_scm.h
+index 0165824c5128..4514bdbf9ca9 100644
+--- a/include/linux/qcom_scm.h
++++ b/include/linux/qcom_scm.h
+@@ -109,6 +109,12 @@ extern int qcom_scm_hdcp_req(struct qcom_scm_hdcp_req *req, u32 req_cnt,
+ 			     u32 *resp);
+ 
+ extern int qcom_scm_qsmmu500_wait_safe_toggle(bool en);
++
++extern int qcom_scm_lmh_limit_dcvsh(u32 *payload, u32 payload_size, u64 limit_node,
++				    u32 node_id, u64 version);
++extern int qcom_scm_lmh_limit_profile_change(u32 profile_id);
++extern bool qcom_scm_limit_dcvsh_available(void);
++
+ #else
+ 
+ #include <linux/errno.h>
+@@ -170,5 +176,10 @@ static inline int qcom_scm_hdcp_req(struct qcom_scm_hdcp_req *req, u32 req_cnt,
+ 
+ static inline int qcom_scm_qsmmu500_wait_safe_toggle(bool en)
+ 		{ return -ENODEV; }
++
++int qcom_scm_lmh_limit_dcvsh(u32 *payload, u32 payload_size, u64 limit_node,
++			     u32 node_id, u64 version)
++		{ return -ENODEV; }
++int qcom_scm_lmh_limit_profile_change(u32 profile_id) { return -ENODEV; }
+ #endif
+ #endif
+-- 
+2.30.2
+
