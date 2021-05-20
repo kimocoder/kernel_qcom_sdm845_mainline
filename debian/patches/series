@@ -41,6 +41,8 @@
 0043-TEMP-dts-sdm845-oneplus-fix-guard-mem.patch
 0044-Add-binfmt_misc-to-defconfig.patch
 0045-input-touchscreen-ft8719-fix-module-not-probing.patch
+0046-op6-enable-audio.patch
+0047-ASoC-qcom-sdm845-set-quaternary-MI2S-codec-DAI-to-I2.patch
 
 mobian/0001-arm64-configs-add-op6_defconfig.patch
 mobian/0002-builddeb-don-t-build-linux-libc-dev-package.patch
