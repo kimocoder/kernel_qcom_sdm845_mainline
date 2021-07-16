@@ -1,0 +1,30 @@
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Fri, 28 May 2021 17:24:16 +0100
+Subject: sofef00: make reset gpio optional
+
+---
+ drivers/gpu/drm/panel/panel-samsung-sofef00.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-samsung-sofef00.c b/drivers/gpu/drm/panel/panel-samsung-sofef00.c
+index 8cb1853..118a219 100644
+--- a/drivers/gpu/drm/panel/panel-samsung-sofef00.c
++++ b/drivers/gpu/drm/panel/panel-samsung-sofef00.c
+@@ -44,6 +44,8 @@ struct sofef00_panel *to_sofef00_panel(struct drm_panel *panel)
+ 
+ static void sofef00_panel_reset(struct sofef00_panel *ctx)
+ {
++	if (!ctx->reset_gpio)
++		return;
+ 	gpiod_set_value_cansleep(ctx->reset_gpio, 0);
+ 	usleep_range(5000, 6000);
+ 	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
+@@ -276,7 +278,7 @@ static int sofef00_panel_probe(struct mipi_dsi_device *dsi)
+ 		return ret;
+ 	}
+ 
+-	ctx->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
++	ctx->reset_gpio = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_HIGH);
+ 	if (IS_ERR(ctx->reset_gpio)) {
+ 		ret = PTR_ERR(ctx->reset_gpio);
+ 		dev_warn(dev, "Failed to get reset-gpios: %d\n", ret);

@@ -1,0 +1,29 @@
+From: Thara Gopinath <thara.gopinath@linaro.org>
+Date: Tue, 27 Apr 2021 19:02:25 -0400
+Subject: [PATCH 41/45] arm64: dts: sdm45: Add support for LMh node
+
+---
+ arch/arm64/boot/dts/qcom/sdm845.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+index 2bdd09e..95ea0a9 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
+@@ -3691,6 +3691,16 @@ swm: swm@c85 {
+ 			};
+ 		};
+ 
++		lmh_cluster1: lmh@17d70800 {
++			compatible = "qcom,msm-hw-limits";
++			qcom,node-id = <0x6370312D>;
++		};
++
++		lmh_cluster0: lmh@17d78800 {
++			compatible = "qcom,msm-hw-limits";
++			qcom,node-id = <0x6370302D>;
++		};
++
+ 		sound: sound {
+ 		};
+ 

@@ -1,0 +1,35 @@
+From: "Dr. Git" <drgitx@gmail.com>
+Date: Sun, 4 Jul 2021 17:29:54 -0300
+Subject: arm64: dts: qcom: sdm845-oneplus-common: fix reserved-memory
+
+Downstream reserves the following memory region as no-map:
+reg = <0 0x85fc0000 0 0x4b40000>; /* enlarge TA memory size from 34M to 62M on 2018/09/03 */
+
+This sits between the upstream definitions of rmtfs_mem and qseecom_mem.
+Reserve this as well to avoid crashes caused by the kernel allocating memory in this region.
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index 909b6e9..3e898bc 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -72,7 +72,7 @@ rmtfs_mem: memory@f5b01000 {
+ 		};
+ 		rmtfs_upper_guard: memory@f5d01000 {
+ 			no-map;
+-			reg = <0 0xf5d01000 0 0x2000>;
++			reg = <0 0xf5d01000 0 0x1000>;
+ 		};
+ 
+ 		/*
+@@ -81,7 +81,7 @@ rmtfs_upper_guard: memory@f5d01000 {
+ 		 */
+ 		removed_region: memory@88f00000 {
+ 			no-map;
+-			reg = <0 0x88f00000 0 0x200000>;
++			reg = <0 0x88f00000 0 0x1c00000>;
+ 		};
+ 
+ 		ramoops: ramoops@ac300000 {

@@ -1,0 +1,19 @@
+From: Hacker1245 <kacper12455@tutanota.com>
+Date: Tue, 6 Apr 2021 19:04:16 +0000
+Subject: [PATCH 44/45] Add binfmt_misc to defconfig
+
+---
+ arch/arm64/configs/sdm845.config | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/configs/sdm845.config b/arch/arm64/configs/sdm845.config
+index a341cda..ac3b9bb 100644
+--- a/arch/arm64/configs/sdm845.config
++++ b/arch/arm64/configs/sdm845.config
+@@ -535,3 +535,5 @@ CONFIG_VT=y
+ CONFIG_CRYPTO_XTS=y
+ CONFIG_TMPFS_XATTR=y
+ CONFIG_DM_CRYPT=y
++
++CONFIG_BINFMT_MISC=m
+\ No newline at end of file

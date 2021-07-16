@@ -1,0 +1,76 @@
+From: Caleb Connolly <caleb@connolly.tech>
+Date: Fri, 30 Apr 2021 12:49:17 +0530
+Subject: [PATCH 32/35] arm64: dts: qcom: sdm845-oneplus-common: dts changes
+
+Enable GPI DMA support, Fuel Guage, Haptics and IPA
+---
+ .../arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi | 25 +++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index f6a3459..7774480 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -7,6 +7,7 @@
+ 
+ /dts-v1/;
+ 
++#include <dt-bindings/dma/qcom-gpi.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/linux-event-codes.h>
+ #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+@@ -365,9 +366,14 @@ zap-shader {
+ };
+ 
+ &i2c12 {
++	#dma-cells = <3>;
+ 	status = "okay";
+ 	clock-frequency = <400000>;
+ 
++	dmas =  <&gpi_dma1 0 4 QCOM_GPI_I2C>,
++			<&gpi_dma1 1 4 QCOM_GPI_I2C>;
++	dma-names = "tx", "rx";
++
+ 	synaptics-rmi4-i2c@20 {
+ 		compatible = "syna,rmi4-i2c";
+ 		reg = <0x20>;
+@@ -399,6 +405,11 @@ rmi4_f12: rmi4-f12@12 {
+ 	};
+ };
+ 
++&ipa {
++	status = "okay";
++	memory-region = <&ipa_fw_mem>;
++};
++
+ &mdss {
+ 	status = "okay";
+ };
+@@ -435,6 +446,18 @@ pinconf {
+ 	};
+ };
+ 
++&pmi8998_fg {
++	status = "okay";
++
++	qcom,max-voltage-uv = <4400000>;
++	qcom,min-voltage-uv = <3700000>;
++};
++
++&pmi8998_haptics {
++	status = "okay";
++	qcom,wave-play-rate-us = <4255>;
++};
++
+ &qupv3_id_1 {
+ 	status = "okay";
+ };
+@@ -599,7 +622,7 @@ mux {
+ 			pins = "gpio6", "gpio25", "gpio26";
+ 			function = "gpio";
+ 			drive-strength = <8>;
+-			bias-disable = <0>;
++			bias-disable;
+ 		};
+ 	};
+ 

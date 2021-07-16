@@ -1,0 +1,22 @@
+From: Joel Selvaraj <jo@jsfamily.in>
+Date: Sun, 9 May 2021 17:23:33 +0530
+Subject: [PATCH 45/45] input: touchscreen: ft8719: fix module not probing
+ Closes: !8
+
+---
+ drivers/input/touchscreen/focaltech_ft8719.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/input/touchscreen/focaltech_ft8719.c b/drivers/input/touchscreen/focaltech_ft8719.c
+index 82b8cb7..b248688 100644
+--- a/drivers/input/touchscreen/focaltech_ft8719.c
++++ b/drivers/input/touchscreen/focaltech_ft8719.c
+@@ -1933,6 +1933,8 @@ static struct of_device_id fts_match_table[] = {
+ 	{},
+ };
+ 
++MODULE_DEVICE_TABLE(of, fts_match_table);
++
+ static struct i2c_driver fts_ts_driver = {
+ 	.probe = fts_ts_probe,
+ 	.remove = fts_ts_remove,
