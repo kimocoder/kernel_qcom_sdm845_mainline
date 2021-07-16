@@ -1,4 +1,4 @@
-Source: %DEB_SOURCE%
+Source: linux-%KREL%
 Section: kernel
 Priority: optional
 Maintainer: Arnaud Ferraris <arnaud.ferraris@gmail.com>
@@ -40,12 +40,3 @@ Architecture: arm64
 Description: Linux kernel debugging symbols for Qualcomm SDM845 devices
  This package will come in handy if you need to debug the kernel. It provides
  all the necessary debug symbols for the kernel and its modules.
-
-Package: linux-image-sdm845
-Architecture: arm64
-Section: kernel
-Depends:
- linux-image-%KREL% (= ${binary:Version}),
-Description: Linux kernel for Qualcomm SDM845 devices
- This packages sole purpose is to depend on the latest Linux kernel and modules
- for use on Qualcomm SDM845 devices such as the OnePlus 6/6T.

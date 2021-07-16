@@ -37,20 +37,8 @@ binary-indep:
 
 binary-arch: debian/control
 	$(BUILD) -f $(srctree)/Makefile intdeb-pkg
-ifeq ($(DEB_SOURCE), linux-sdm845)
-	dh_installdeb -plinux-image-sdm845
-	dh_gencontrol -plinux-image-sdm845
-	dh_install -plinux-image-sdm845
-	dh_installdocs -plinux-image-sdm845
-	dh_installchangelogs -plinux-image-sdm845
-	dh_compress -plinux-image-sdm845
-	dh_builddeb -plinux-image-sdm845
-endif
 
 clean: debian/control
-ifeq ($(DEB_SOURCE), linux-sdm845)
-	dh_clean -plinux-image-sdm845
-endif
 	rm -rf debian/*tmp debian/files
 	$(BUILD) clean
 
