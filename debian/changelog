@@ -1,3 +1,10 @@
+linux-5.12-sdm845 (5.12.17+sdm845-5) unstable; urgency=medium
+
+  * d/control: don't build linux-image-sdm845
+  * d/patches: refresh patches
+
+ -- Arnaud Ferraris <arnaud.ferraris@gmail.com>  Fri, 16 Jul 2021 11:46:47 +0200
+
 linux-sdm845 (5.12.4+sdm845-4) unstable; urgency=medium
 
   * d/patches: enable audio on oneplus6
