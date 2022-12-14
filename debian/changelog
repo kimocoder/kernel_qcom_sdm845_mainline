@@ -1,3 +1,10 @@
+linux-6.0-sdm845 (6.0.13+sdm845-1) unstable; urgency=medium
+
+  * Rebase on 6.0.13
+  * d/patches: improve support for Xiaomi Mi Mix 2S
+
+ -- Arnaud Ferraris <aferraris@debian.org>  Wed, 14 Dec 2022 20:01:49 +0100
+
 linux-6.0-sdm845 (6.0.8+sdm845-1) unstable; urgency=medium
 
   * Rebase on 6.0.8
