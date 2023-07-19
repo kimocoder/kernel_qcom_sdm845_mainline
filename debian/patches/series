@@ -102,3 +102,5 @@ sdm845/0101-arm64-dts-qcom-sdm845-oneplus-add-touch-clip-values.patch
 sdm845/0102-sdm845.config-6.4-additions.patch
 sdm845/0103-fixup-sdm845.config-6.4-additions.patch
 sdm845/0104-FIXUP-arm64-dts-qcom-sdm845-shift-axolotl-fix-speake.patch
+polaris/0105-dt-bindings-display-panel-Add-Novatek-NT35596S-panel.patch
+polaris/0106-drm-panel-Add-novatek-nt35596s-panel-driver.patch
