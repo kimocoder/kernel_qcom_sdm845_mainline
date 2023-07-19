@@ -1,0 +1,40 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Wed, 24 May 2023 01:48:54 +0100
+Subject: arm64: dts: qcom: sdm845-shift-axolotl: enable pmi8998 charger
+
+Enable the PMI8998/smb2 charger, and denote the secondary SMB1355
+charger which is used for parallel charging.
+
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+index 0ad8913..de5f26f 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+@@ -494,6 +494,10 @@ touchscreen@38 {
+ 	};
+ };
+ 
++&i2c10 {
++	/* SMB1355@0x0C */
++};
++
+ &ipa {
+ 	qcom,gsi-loader = "self";
+ 	memory-region = <&ipa_fw_mem>;
+@@ -522,6 +526,12 @@ pinconf {
+ 	};
+ };
+ 
++&pmi8998_charger {
++	monitored-battery = <&battery>;
++
++	status = "okay";
++};
++
+ &pm8998_resin {
+ 	linux,code = <KEY_VOLUMEDOWN>;
+ 	status = "okay";

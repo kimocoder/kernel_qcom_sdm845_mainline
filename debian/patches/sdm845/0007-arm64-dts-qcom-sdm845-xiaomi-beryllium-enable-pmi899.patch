@@ -1,0 +1,44 @@
+From: Joel Selvaraj <joelselvaraj.oss@gmail.com>
+Date: Fri, 10 Mar 2023 02:42:33 -0600
+Subject: arm64: dts: qcom: sdm845-xiaomi-beryllium: enable pmi8998 charger
+
+Enable the pmi8998 charger and define some basic battery properties.
+
+Signed-off-by: Joel Selvaraj <joelselvaraj.oss@gmail.com>
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ .../boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi      | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
+index 1915643..f7fd897 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
+@@ -115,6 +115,14 @@ rmtfs_mem: memory@f6301000 {
+ 		};
+ 	};
+ 
++	battery: battery {
++		compatible = "simple-battery";
++
++		charge-full-design-microamp-hours = <4000000>;
++		voltage-min-design-microvolt = <3400000>;
++		voltage-max-design-microvolt = <4400000>;
++	};
++
+ 	vreg_s4a_1p8: vreg-s4a-1p8 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vreg_s4a_1p8";
+@@ -341,6 +349,12 @@ &pmi8998_wled {
+ 	qcom,cabc;
+ };
+ 
++&pmi8998_charger {
++	monitored-battery = <&battery>;
++
++	status = "okay";
++};
++
+ &pm8998_resin {
+ 	linux,code = <KEY_VOLUMEDOWN>;
+ 	status = "okay";

@@ -1,0 +1,27 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Mon, 29 May 2023 20:55:06 +0100
+Subject: MAINTAINERS: Adjust Qualcomm driver globbing
+
+The only drivers matching pm8???-* are two levels deep, adjust the glob
+to match them.
+
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 35e1959..54ef320 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2586,9 +2586,9 @@ F:	arch/arm/boot/dts/qcom-*.dtsi
+ F:	arch/arm/configs/qcom_defconfig
+ F:	arch/arm/mach-qcom/
+ F:	arch/arm64/boot/dts/qcom/
++F:	drivers/*/*/pm8???-*
+ F:	drivers/*/*/qcom*
+ F:	drivers/*/*/qcom/
+-F:	drivers/*/pm8???-*
+ F:	drivers/*/qcom*
+ F:	drivers/*/qcom/
+ F:	drivers/bluetooth/btqcomsmd.c
