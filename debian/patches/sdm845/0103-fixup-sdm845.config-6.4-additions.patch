@@ -1,0 +1,21 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Thu, 29 Jun 2023 21:51:26 +0100
+Subject: fixup! sdm845.config: 6.4 additions
+
+---
+ arch/arm64/configs/sdm845.config | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/configs/sdm845.config b/arch/arm64/configs/sdm845.config
+index 34b6134..81c1eef 100644
+--- a/arch/arm64/configs/sdm845.config
++++ b/arch/arm64/configs/sdm845.config
+@@ -107,6 +107,8 @@ CONFIG_DMABUF_HEAPS_CMA=y
+ CONFIG_DMABUF_HEAPS_SYSTEM=y
+ CONFIG_HZ_1000=y
+ CONFIG_MODULE_COMPRESS_ZSTD=y
++# Alpine can't seem to handle this
++CONFIG_MODULE_DECOMPRESS=y
+ 
+ # Needed for mounting userdata on android
+ CONFIG_QFMT_V2=y

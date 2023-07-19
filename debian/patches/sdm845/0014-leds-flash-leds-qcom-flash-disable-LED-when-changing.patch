@@ -1,0 +1,32 @@
+From: Dylan Van Assche <me@dylanvanassche.be>
+Date: Sun, 7 May 2023 19:29:41 +0200
+Subject: leds: flash: leds-qcom-flash: disable LED when changing brightness
+
+The Qualcomm PMI8998 PMIC requires the LED to be disabled when configuring
+the brightness. Always disable the LED when setting the brightness and
+re-enable it afterwards.
+
+Signed-off-by: Dylan Van Assche <me@dylanvanassche.be>
+---
+ drivers/leds/flash/leds-qcom-flash.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/leds/flash/leds-qcom-flash.c b/drivers/leds/flash/leds-qcom-flash.c
+index 16045b5..c8d41a3 100644
+--- a/drivers/leds/flash/leds-qcom-flash.c
++++ b/drivers/leds/flash/leds-qcom-flash.c
+@@ -417,6 +417,14 @@ static int qcom_flash_led_brightness_set(struct led_classdev *led_cdev,
+ 	bool enable = !!brightness;
+ 	int rc;
+ 
++	rc = set_flash_strobe(led, SW_STROBE, false);
++	if (rc)
++		return rc;
++
++	rc = set_flash_module_en(led, false);
++	if (rc)
++		return rc;
++
+ 	rc = set_flash_current(led, current_ma, TORCH_MODE);
+ 	if (rc)
+ 		return rc;

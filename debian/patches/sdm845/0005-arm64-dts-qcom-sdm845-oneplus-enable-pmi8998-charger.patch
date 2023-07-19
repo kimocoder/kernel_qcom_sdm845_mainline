@@ -1,0 +1,59 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Sat, 16 Oct 2021 17:16:53 +0100
+Subject: arm64: dts: qcom: sdm845-oneplus: enable pmi8998 charger
+
+Enable the pmi8998 charger on both devices, enabling charging speeds
+above the default 500mA limit the bootloader sets.
+
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi   | 4 ++++
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts | 4 ++++
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts    | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index 55ee8dc..364adf4 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -480,6 +480,10 @@ pinconf {
+ 	};
+ };
+ 
++&pmi8998_charger {
++	status = "okay";
++};
++
+ &q6afedai {
+ 	qi2s@22 {
+ 		reg = <22>;
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+index 6cdda97..623a826 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+@@ -51,6 +51,10 @@ max98927_codec: max98927@3a {
+ 	};
+ };
+ 
++&pmi8998_charger {
++	monitored-battery = <&battery>;
++};
++
+ &sound {
+ 	model = "OnePlus 6";
+ 	audio-routing =	"RX_BIAS", "MCLK",
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts b/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
+index d82c0d4..9471ada 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
+@@ -47,6 +47,10 @@ &sound {
+ 			"AMIC5", "MIC BIAS3";
+ };
+ 
++&pmi8998_charger {
++	monitored-battery = <&battery>;
++};
++
+ /*
+  * The TFA9894 codec is currently unsupported.
+  * We need to delete the node to allow the soundcard
