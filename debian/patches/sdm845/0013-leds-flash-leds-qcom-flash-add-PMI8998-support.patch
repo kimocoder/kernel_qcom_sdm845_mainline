@@ -1,0 +1,36 @@
+From: Dylan Van Assche <me@dylanvanassche.be>
+Date: Sun, 7 May 2023 19:29:40 +0200
+Subject: leds: flash: leds-qcom-flash: add PMI8998 support
+
+Add subtype for the Qualcomm PMI8998 PMIC to support it besides the
+PM8150 PMIC which has the same registers. Adjust the driver to recognize
+both PMIC subtypes as a 3 channel LED driver.
+
+Signed-off-by: Dylan Van Assche <me@dylanvanassche.be>
+---
+ drivers/leds/flash/leds-qcom-flash.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/leds/flash/leds-qcom-flash.c b/drivers/leds/flash/leds-qcom-flash.c
+index 90a24fa..16045b5 100644
+--- a/drivers/leds/flash/leds-qcom-flash.c
++++ b/drivers/leds/flash/leds-qcom-flash.c
+@@ -18,7 +18,8 @@
+ #define FLASH_TYPE_VAL			0x18
+ 
+ #define FLASH_SUBTYPE_REG		0x05
+-#define FLASH_SUBTYPE_3CH_VAL		0x04
++#define FLASH_SUBTYPE_3CH_PM8150_VAL	0x04
++#define FLASH_SUBTYPE_3CH_PMI8998_VAL	0x03
+ #define FLASH_SUBTYPE_4CH_VAL		0x07
+ 
+ #define FLASH_STS_3CH_OTST1		BIT(0)
+@@ -682,7 +683,7 @@ static int qcom_flash_led_probe(struct platform_device *pdev)
+ 		return rc;
+ 	}
+ 
+-	if (val == FLASH_SUBTYPE_3CH_VAL) {
++	if (val == FLASH_SUBTYPE_3CH_PM8150_VAL || val == FLASH_SUBTYPE_3CH_PMI8998_VAL) {
+ 		flash_data->hw_type = QCOM_MVFLASH_3CH;
+ 		flash_data->max_channels = 3;
+ 		regs = mvflash_3ch_regs;
