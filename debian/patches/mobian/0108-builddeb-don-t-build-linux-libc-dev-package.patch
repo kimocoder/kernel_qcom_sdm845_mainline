@@ -1,0 +1,30 @@
+From: Arnaud Ferraris <arnaud.ferraris@gmail.com>
+Date: Sun, 2 May 2021 18:57:20 +0200
+Subject: builddeb: don't build linux-libc-dev package
+
+---
+ scripts/package/builddeb | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/scripts/package/builddeb b/scripts/package/builddeb
+index 032774e..2657164 100755
+--- a/scripts/package/builddeb
++++ b/scripts/package/builddeb
+@@ -223,8 +223,6 @@ do
+ 		install_linux_image_dbg debian/linux-image-dbg debian/linux-image;;
+ 	linux-image-*|user-mode-linux-*)
+ 		install_linux_image debian/linux-image ${package};;
+-	linux-libc-dev)
+-		install_libc_headers debian/linux-libc-dev;;
+ 	linux-headers-*)
+ 		install_kernel_headers debian/linux-headers ${package#linux-headers-};;
+ 	esac
+@@ -237,8 +235,6 @@ do
+ 		create_package ${package} debian/linux-image-dbg;;
+ 	linux-image-*|user-mode-linux-*)
+ 		create_package ${package} debian/linux-image;;
+-	linux-libc-dev)
+-		create_package ${package} debian/linux-libc-dev;;
+ 	linux-headers-*)
+ 		create_package ${package} debian/linux-headers;;
+ 	esac
