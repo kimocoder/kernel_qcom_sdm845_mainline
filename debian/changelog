@@ -1,0 +1,5 @@
+linux-6.4-sdm845 (6.4.3+sdm845-1) UNRELEASED; urgency=medium
+
+  * Initial 6.4 release
+
+ -- Arnaud Ferraris <aferraris@debian.org>  Wed, 19 Jul 2023 16:07:56 +0200
