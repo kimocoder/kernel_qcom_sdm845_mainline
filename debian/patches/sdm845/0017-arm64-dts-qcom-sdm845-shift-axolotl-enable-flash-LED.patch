@@ -1,0 +1,49 @@
+From: Dylan Van Assche <me@dylanvanassche.be>
+Date: Thu, 18 May 2023 15:31:13 +0200
+Subject: arm64: dts: qcom: sdm845-shift-axolotl: enable flash LEDs
+
+The SHIFT6mq (axolotl) is an SDM845-based smartphone with 2 flash LEDs.
+One LED is white, the other one is yellow. Define both LEDs in the DTS
+so they can be used as flash or torch and enable the flash LED
+controller to control them in PMI8998.
+
+Signed-off-by: Dylan Van Assche <me@dylanvanassche.be>
+Reviewed-by: Konrad Dybcio <konrad.dybcio@linaro.org>
+Reviewed-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+index de5f26f..f1cfe5a1 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+@@ -564,6 +564,28 @@ led@5 {
+ 	};
+ };
+ 
++&pmi8998_flash {
++	status = "okay";
++
++	led-0 {
++		function = LED_FUNCTION_FLASH;
++		color = <LED_COLOR_ID_WHITE>;
++		led-sources = <1>;
++		led-max-microamp = <100000>;
++		flash-max-microamp = <1100000>;
++		flash-max-timeout-us = <1280000>;
++	};
++
++	led-1 {
++		function = LED_FUNCTION_FLASH;
++		color = <LED_COLOR_ID_YELLOW>;
++		led-sources = <2>;
++		led-max-microamp = <100000>;
++		flash-max-microamp = <1100000>;
++		flash-max-timeout-us = <1280000>;
++	};
++};
++
+ &qup_uart9_rx {
+ 	drive-strength = <2>;
+ 	bias-pull-up;

@@ -1,0 +1,90 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Wed, 24 May 2023 01:43:09 +0100
+Subject: arm64: dts: qcom: pmi8998: enable rradc by default
+
+There is no need for the RRADC to be disabled by default,
+lets just enable it by default and not clutter up DT.
+
+Acked-by: Konrad Dybcio <konrad.dybcio@linaro.org>
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi         | 4 ----
+ arch/arm64/boot/dts/qcom/pmi8998.dtsi                        | 2 --
+ arch/arm64/boot/dts/qcom/sdm845-db845c.dts                   | 4 ----
+ arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi          | 4 ----
+ arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi | 4 ----
+ 5 files changed, 18 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi
+index 062d56c..68e634f8 100644
+--- a/arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi
+@@ -279,10 +279,6 @@ vol_keys_default: vol-keys-state {
+ 	};
+ };
+ 
+-&pmi8998_rradc {
+-	status = "okay";
+-};
+-
+ &qusb2phy {
+ 	status = "okay";
+ 
+diff --git a/arch/arm64/boot/dts/qcom/pmi8998.dtsi b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+index ffe587f..be6f60b 100644
+--- a/arch/arm64/boot/dts/qcom/pmi8998.dtsi
++++ b/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+@@ -23,8 +23,6 @@ pmi8998_rradc: adc@4500 {
+ 			compatible = "qcom,pmi8998-rradc";
+ 			reg = <0x4500>;
+ 			#io-channel-cells = <1>;
+-
+-			status = "disabled";
+ 		};
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-db845c.dts b/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
+index e14fe9b..66087af 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-db845c.dts
+@@ -649,10 +649,6 @@ led@5 {
+ 	};
+ };
+ 
+-&pmi8998_rradc {
+-	status = "okay";
+-};
+-
+ /* QUAT I2S Uses 4 I2S SD Lines for audio on LT9611 HDMI Bridge */
+ &q6afedai {
+ 	dai@22 {
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+index 5c38434..55ee8dc 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+@@ -480,10 +480,6 @@ pinconf {
+ 	};
+ };
+ 
+-&pmi8998_rradc {
+-	status = "okay";
+-};
+-
+ &q6afedai {
+ 	qi2s@22 {
+ 		reg = <22>;
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
+index 5ed975c..1915643 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
+@@ -346,10 +346,6 @@ &pm8998_resin {
+ 	status = "okay";
+ };
+ 
+-&pmi8998_rradc {
+-	status = "okay";
+-};
+-
+ /* QUAT I2S Uses 1 I2S SD Line for audio on TAS2559/60 amplifiers */
+ &q6afedai {
+ 	dai@22 {
