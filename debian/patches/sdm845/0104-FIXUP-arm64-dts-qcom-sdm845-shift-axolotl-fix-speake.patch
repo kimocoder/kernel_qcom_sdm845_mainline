@@ -1,0 +1,30 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Sun, 2 Jul 2023 23:14:23 +0100
+Subject: FIXUP: arm64: dts: qcom: sdm845-shift-axolotl: fix speaker codec
+
+Fix the sound-dai codec reference.
+---
+ arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+index 1d471be..c89691d 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts
+@@ -508,6 +508,7 @@ tfa9890_codec: audio-codec@34 {
+ 		compatible = "nxp,tfa9890";
+ 		reg = <0x34>;
+ 		vddd-supply = <&vreg_s4a_1p8>;
++		sound-name-prefix = "Speaker";
+ 		#sound-dai-cells = <0>;
+ 	};
+ };
+@@ -794,7 +795,7 @@ cpu {
+ 	speaker-dai-link {
+ 		link-name = "Speaker Playback";
+ 		codec {
+-			sound-dai = <&tfa9890_codec 0>;
++			sound-dai = <&tfa9890_codec>;
+ 		};
+ 
+ 		cpu {
