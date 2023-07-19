@@ -1,0 +1,40 @@
+From: methanal <baclofen@tuta.io>
+Date: Wed, 14 Jun 2023 03:15:28 +0900
+Subject: Input: synaptics-rmi4 - fix missing product ID in aftermarket touch
+ ICs
+
+Some replacement displays include third-party touch ICs which do not
+report the product ID correctly unless read directly from its register.
+Therefore, read the product ID from the appropriate register instead.
+
+Signed-off-by: methanal <baclofen@tuta.io>
+---
+ drivers/input/rmi4/rmi_f01.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/drivers/input/rmi4/rmi_f01.c b/drivers/input/rmi4/rmi_f01.c
+index d7603c5..4646a82 100644
+--- a/drivers/input/rmi4/rmi_f01.c
++++ b/drivers/input/rmi4/rmi_f01.c
+@@ -250,6 +250,21 @@ static int rmi_f01_read_properties(struct rmi_device *rmi_dev,
+ 		}
+ 	}
+ 
++	/*
++	 * Some aftermarket ICs will only report their
++	 * product ID when reading from the respective address
++	 * directly.
++	 */
++	if (props->product_id[0] < 0x20) {
++		ret = rmi_read_block(rmi_dev, query_base_addr + 11,
++				       props->product_id, RMI_PRODUCT_ID_LENGTH);
++		if (ret) {
++			dev_err(&rmi_dev->dev,
++				"Failed to read product id: %d\n", ret);
++			return ret;
++		}
++	}
++
+ 	return 0;
+ }
+ 
