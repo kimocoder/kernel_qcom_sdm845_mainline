@@ -18,7 +18,7 @@ Reviewed-by: Caleb Connolly <caleb.connolly@linaro.org>
  1 file changed, 15 insertions(+)
 
 diff --git a/drivers/misc/fastrpc.c b/drivers/misc/fastrpc.c
-index 9051551..1475f51 100644
+index 9666d28..a8e9db2 100644
 --- a/drivers/misc/fastrpc.c
 +++ b/drivers/misc/fastrpc.c
 @@ -2246,6 +2246,8 @@ static int fastrpc_rpmsg_probe(struct rpmsg_device *rpdev)
