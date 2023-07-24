@@ -1,3 +1,13 @@
+linux-6.4-sdm845 (6.4.6+sdm845-1) unstable; urgency=medium
+
+  [ Arnaud Ferraris ]
+  * d/control: drop -dbg packages
+
+  [ Mobot ]
+  * Rebase on 6.4.6
+
+ -- Mobot <group_9279_bot_63f8e5239ee997bddf744fbb961e9cce@noreply.salsa.debian.org>  Mon, 24 Jul 2023 17:23:03 +0000
+
 linux-6.4-sdm845 (6.4.4+sdm845-1) unstable; urgency=medium
 
   * Initial 6.4 release
