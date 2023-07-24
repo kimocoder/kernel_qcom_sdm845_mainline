@@ -27,7 +27,7 @@ index 36de335..44590dc 100644
      type: object
 diff --git a/Documentation/devicetree/bindings/power/supply/qcom,pmi8998-charger.yaml b/Documentation/devicetree/bindings/power/supply/qcom,pmi8998-charger.yaml
 new file mode 100644
-index 00000000..277c47e
+index 0000000..277c47e
 --- /dev/null
 +++ b/Documentation/devicetree/bindings/power/supply/qcom,pmi8998-charger.yaml
 @@ -0,0 +1,82 @@
