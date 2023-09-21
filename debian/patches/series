@@ -92,3 +92,5 @@ sdm845/0091-arm64-dts-qcom-sdm845-shift-axolotl-fix-panel-reset-.patch
 ath10k/0092-Revert-arm64-dts-qcom-sdm845-oneplus-common-add-ath1.patch
 ath10k/0093-Revert-arm64-dts-qcom-sdm845-xiaomi-beryllium-common.patch
 ath10k/0094-Revert-arm64-dts-qcom-sdm845-shift-axolotl-add-ath10.patch
+debian/0095-wireless-Add-Debian-wireless-regdb-certificates.patch
+mobian/0096-arm64-configs-add-sdm845_defconfig.patch
