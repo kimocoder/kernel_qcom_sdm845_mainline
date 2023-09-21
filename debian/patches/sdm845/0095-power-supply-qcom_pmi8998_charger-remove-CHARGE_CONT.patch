@@ -1,0 +1,56 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Wed, 2 Aug 2023 14:44:18 +0100
+Subject: power: supply: qcom_pmi8998_charger: remove CHARGE_CONTROL_LIMIT_*
+ props
+
+These property were intended to allow the power supply to be treated as a
+cooling device, however the cooling device interface has been dropped
+from the psy core code. They now just duplicate the CURRENT_NOW and
+CURRENT_MAX properties and are generally confusing, drop them.
+
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ drivers/power/supply/qcom_pmi8998_charger.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/drivers/power/supply/qcom_pmi8998_charger.c b/drivers/power/supply/qcom_pmi8998_charger.c
+index cac89d2..c7ec9ae 100644
+--- a/drivers/power/supply/qcom_pmi8998_charger.c
++++ b/drivers/power/supply/qcom_pmi8998_charger.c
+@@ -409,8 +409,6 @@ static enum power_supply_property smb2_properties[] = {
+ 	POWER_SUPPLY_PROP_HEALTH,
+ 	POWER_SUPPLY_PROP_ONLINE,
+ 	POWER_SUPPLY_PROP_USB_TYPE,
+-	POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT,
+-	POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT_MAX,
+ };
+ 
+ static enum power_supply_usb_type smb2_usb_types[] = {
+@@ -674,11 +672,7 @@ static int smb2_get_property(struct power_supply *psy,
+ 		val->strval = chip->name;
+ 		return 0;
+ 	case POWER_SUPPLY_PROP_CURRENT_MAX:
+-	case POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT:
+ 		return smb2_get_current_limit(chip, &val->intval);
+-	case POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT_MAX:
+-		val->intval = DCP_CURRENT_UA;
+-		return 0;
+ 	case POWER_SUPPLY_PROP_CURRENT_NOW:
+ 		return smb2_get_iio_chan(chip, chip->usb_in_i_chan,
+ 					 &val->intval);
+@@ -707,7 +701,6 @@ static int smb2_set_property(struct power_supply *psy,
+ 
+ 	switch (psp) {
+ 	case POWER_SUPPLY_PROP_CURRENT_MAX:
+-	case POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT:
+ 		return smb2_set_current_limit(chip, val->intval);
+ 	default:
+ 		dev_err(chip->dev, "No setter for property: %d\n", psp);
+@@ -720,7 +713,6 @@ static int smb2_property_is_writable(struct power_supply *psy,
+ {
+ 	switch (psp) {
+ 	case POWER_SUPPLY_PROP_CURRENT_MAX:
+-	case POWER_SUPPLY_PROP_CHARGE_CONTROL_LIMIT:
+ 		return 1;
+ 	default:
+ 		return 0;
