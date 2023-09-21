@@ -1,0 +1,47 @@
+From: Joel Selvaraj <joelselvaraj.oss@gmail.com>
+Date: Tue, 15 Aug 2023 20:28:28 -0500
+Subject: fixup! arm64: dts: qcom: sdm845-xiaomi-beryllium-tianma: introduce
+ support for touchscreen
+
+---
+ .../dts/qcom/sdm845-xiaomi-beryllium-tianma.dts    | 28 ++++++++++++----------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-tianma.dts b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-tianma.dts
+index 0ce0ac2..0ca1997 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-tianma.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-tianma.dts
+@@ -17,18 +17,20 @@ &display_panel {
+ &i2c14 {
+ 	status = "okay";
+ 
+-	dmas =  <&gpi_dma1 0 6 QCOM_GPI_I2C>,
+-		<&gpi_dma1 1 6 QCOM_GPI_I2C>;
+-	dma-names = "tx", "rx";
+-
+-	touchscreen: novatek@62 {
+-		compatible = "novatek,nt36525"; /* Should be novatek,nt36672A instead #TODO */
+-		reg = <0x62>;
+-		vdd-supply = <&vreg_l14a_1p8>;
+-		interrupt-parent = <&tlmm>;
+-		interrupts = <31 IRQ_TYPE_EDGE_RISING>;
+-		reset-gpio = <&tlmm 32 0x00 /* GPIO_ACTIVE_HIGH */ >;
+-	};
++	touchscreen@1 {
++		compatible = "novatek,nvt-ts";
++		reg = <0x01>;
+ 
+-};
++		interrupts-extended = <&tlmm 31 IRQ_TYPE_EDGE_RISING>;
++		reset-gpios = <&tlmm 32 GPIO_ACTIVE_LOW>;
++
++		iovcc-supply = <&vreg_l14a_1p8>;
+ 
++		pinctrl-0 = <&ts_int_default &ts_reset_default>;
++		pinctrl-1 = <&ts_int_sleep &ts_reset_sleep>;
++		pinctrl-names = "default", "sleep";
++
++		touchscreen-size-x = <1080>;
++		touchscreen-size-y = <2246>;
++	};
++};

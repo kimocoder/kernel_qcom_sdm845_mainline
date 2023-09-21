@@ -1,0 +1,21 @@
+From: Joel Selvaraj <joelselvaraj.oss@gmail.com>
+Date: Tue, 15 Aug 2023 20:29:19 -0500
+Subject: fixup! arm64: configs: add sdm845 config fragment
+
+---
+ arch/arm64/configs/sdm845.config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/configs/sdm845.config b/arch/arm64/configs/sdm845.config
+index fc2dc73..6efcc7b 100644
+--- a/arch/arm64/configs/sdm845.config
++++ b/arch/arm64/configs/sdm845.config
+@@ -16,7 +16,7 @@ CONFIG_SND_SOC_TFA98XX=m
+ # Pocophone F1
+ CONFIG_DRM_PANEL_NOVATEK_NT36672A=y
+ CONFIG_DRM_PANEL_EBBG_FT8719=y
+-CONFIG_TOUCHSCREEN_NT36XXX=m
++CONFIG_TOUCHSCREEN_NOVATEK_NVT_TS=m
+ CONFIG_QCOM_GPI_DMA=m
+ CONFIG_SND_SOC_TAS2559=m
+ 
