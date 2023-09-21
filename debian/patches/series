@@ -116,3 +116,5 @@ sdm845/0115-UNTESTED-axolotl-sdcard.patch
 ath10k/0116-Revert-arm64-dts-qcom-sdm845-oneplus-common-add-ath1.patch
 ath10k/0117-Revert-arm64-dts-qcom-sdm845-xiaomi-beryllium-common.patch
 ath10k/0118-Revert-arm64-dts-qcom-sdm845-shift-axolotl-add-ath10.patch
+debian/0119-wireless-Add-Debian-wireless-regdb-certificates.patch
+mobian/0120-arm64-configs-add-sdm845_defconfig.patch
