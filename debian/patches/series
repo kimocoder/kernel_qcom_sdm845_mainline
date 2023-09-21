@@ -89,3 +89,6 @@ sdm845/0088-arm64-dts-qcom-sdm845-db845c-mark-pcie0_3p3v_dual-al.patch
 sdm845/0089-arm64-dts-qcom-qrb4210-rb2-don-t-force-usb-periphera.patch
 sdm845/0090-drm-panel-add-support-for-the-SHIFT6mq-variant-of-rm.patch
 sdm845/0091-arm64-dts-qcom-sdm845-shift-axolotl-fix-panel-reset-.patch
+ath10k/0092-Revert-arm64-dts-qcom-sdm845-oneplus-common-add-ath1.patch
+ath10k/0093-Revert-arm64-dts-qcom-sdm845-xiaomi-beryllium-common.patch
+ath10k/0094-Revert-arm64-dts-qcom-sdm845-shift-axolotl-add-ath10.patch
