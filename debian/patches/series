@@ -113,3 +113,6 @@ sdm845/0112-fixup-arm64-configs-add-sdm845-config-fragment.patch
 sdm845/0113-fixup-Input-Add-Novatek-NT36xxx-touchscreen-driver.patch
 sdm845/0114-fixup-dt-bindings-touchscreen-Add-binding-for-Novate.patch
 sdm845/0115-UNTESTED-axolotl-sdcard.patch
+ath10k/0116-Revert-arm64-dts-qcom-sdm845-oneplus-common-add-ath1.patch
+ath10k/0117-Revert-arm64-dts-qcom-sdm845-xiaomi-beryllium-common.patch
+ath10k/0118-Revert-arm64-dts-qcom-sdm845-shift-axolotl-add-ath10.patch
