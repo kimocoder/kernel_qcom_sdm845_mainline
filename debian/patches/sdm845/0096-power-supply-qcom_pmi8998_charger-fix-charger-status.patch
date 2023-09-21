@@ -1,0 +1,29 @@
+From: Caleb Connolly <caleb.connolly@linaro.org>
+Date: Wed, 2 Aug 2023 15:38:44 +0100
+Subject: power: supply: qcom_pmi8998_charger: fix charger status
+
+The INHIBIT_CHARGE status bit means the battery has reached a
+pre-programmed charge limit which is some voltage offset below the
+target float voltage. This should be reported as a STATUS_FULL rather
+than UNKNOWN, fix it.
+
+Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+---
+ drivers/power/supply/qcom_pmi8998_charger.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/power/supply/qcom_pmi8998_charger.c b/drivers/power/supply/qcom_pmi8998_charger.c
+index c7ec9ae..10f4dd0 100644
+--- a/drivers/power/supply/qcom_pmi8998_charger.c
++++ b/drivers/power/supply/qcom_pmi8998_charger.c
+@@ -517,9 +517,9 @@ static int smb2_get_prop_status(struct smb2_chip *chip, int *val)
+ 		*val = POWER_SUPPLY_STATUS_NOT_CHARGING;
+ 		return rc;
+ 	case TERMINATE_CHARGE:
++	case INHIBIT_CHARGE:
+ 		*val = POWER_SUPPLY_STATUS_FULL;
+ 		return rc;
+-	case INHIBIT_CHARGE:
+ 	default:
+ 		*val = POWER_SUPPLY_STATUS_UNKNOWN;
+ 		return rc;

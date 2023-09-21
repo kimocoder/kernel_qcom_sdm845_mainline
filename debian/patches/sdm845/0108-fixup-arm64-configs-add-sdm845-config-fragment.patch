@@ -1,0 +1,21 @@
+From: Joel Selvaraj <joelselvaraj.oss@gmail.com>
+Date: Mon, 14 Aug 2023 21:38:43 -0500
+Subject: fixup! arm64: configs: add sdm845 config fragment
+
+---
+ arch/arm64/configs/sdm845.config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/configs/sdm845.config b/arch/arm64/configs/sdm845.config
+index 4ff2121..fc2dc73 100644
+--- a/arch/arm64/configs/sdm845.config
++++ b/arch/arm64/configs/sdm845.config
+@@ -65,7 +65,7 @@ CONFIG_LEDS_QCOM_LPG=m
+ CONFIG_LEDS_QCOM_FLASH=m
+ 
+ # Touchscreen - Pocophone F1 / SHIFT6mq
+-CONFIG_TOUCHSCREEN_FOCALTECH_FTS=m
++CONFIG_TOUCHSCREEN_EDT_FT5X06=m
+ 
+ # Remoteproc
+ CONFIG_SLIMBUS=y
