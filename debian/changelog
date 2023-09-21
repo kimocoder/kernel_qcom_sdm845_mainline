@@ -1,5 +1,5 @@
-linux-6.5-sdm845 (6.5+sdm845-1) UNRELEASED; urgency=medium
+linux-6.5-sdm845 (6.5.4+sdm845-1) unstable; urgency=medium
 
   * Initial 6.5 release
 
- -- Arnaud Ferraris <aferraris@debian.org>  Thu, 06 Oct 2022 14:38:14 +0200
+ -- Arnaud Ferraris <aferraris@debian.org>  Thu, 21 Sep 2023 17:24:22 +0200
