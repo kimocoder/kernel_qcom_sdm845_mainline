@@ -9,7 +9,7 @@ This reverts commit 79e90fb715c321e0820d6fcb8c4b257afd12a1fe.
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
-index c9583156..27f4b06 100644
+index c958315..27f4b06 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi
 @@ -735,5 +735,4 @@ &wifi {

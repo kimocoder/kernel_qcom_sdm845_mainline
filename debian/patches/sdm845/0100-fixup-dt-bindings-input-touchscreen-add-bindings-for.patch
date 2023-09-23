@@ -10,7 +10,7 @@ Subject: fixup! dt-bindings: input: touchscreen: add bindings for
 
 diff --git a/Documentation/devicetree/bindings/input/touchscreen/focaltech,fts.yaml b/Documentation/devicetree/bindings/input/touchscreen/focaltech,fts.yaml
 deleted file mode 100644
-index 07fe595..00000000
+index 07fe595..0000000
 --- a/Documentation/devicetree/bindings/input/touchscreen/focaltech,fts.yaml
 +++ /dev/null
 @@ -1,81 +0,0 @@
