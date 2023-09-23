@@ -43,7 +43,7 @@ index 7a328da..41a100c 100644
  obj-$(CONFIG_TOUCHSCREEN_HIDEEP)	+= hideep.o
 diff --git a/drivers/input/touchscreen/focaltech_fts.c b/drivers/input/touchscreen/focaltech_fts.c
 deleted file mode 100644
-index 2b16ed0..00000000
+index 2b16ed0..0000000
 --- a/drivers/input/touchscreen/focaltech_fts.c
 +++ /dev/null
 @@ -1,448 +0,0 @@

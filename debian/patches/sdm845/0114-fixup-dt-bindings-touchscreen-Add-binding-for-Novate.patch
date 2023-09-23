@@ -10,7 +10,7 @@ Subject: fixup! dt-bindings: touchscreen: Add binding for Novatek NT36xxx
 
 diff --git a/Documentation/devicetree/bindings/input/touchscreen/nt36xxx.yaml b/Documentation/devicetree/bindings/input/touchscreen/nt36xxx.yaml
 deleted file mode 100644
-index a360a9f..00000000
+index a360a9f..0000000
 --- a/Documentation/devicetree/bindings/input/touchscreen/nt36xxx.yaml
 +++ /dev/null
 @@ -1,59 +0,0 @@
