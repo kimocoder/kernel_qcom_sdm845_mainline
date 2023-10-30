@@ -1,0 +1,5 @@
+linux-6.6-sdm845 (6.6+sdm845-1) UNRELEASED; urgency=medium
+
+  * Initial 6.6 release
+
+ -- Arnaud Ferraris <aferraris@debian.org>  Mon, 30 Oct 2023 10:56:32 +0100
