@@ -1,3 +1,9 @@
+linux-6.6-sdm845 (6.6+sdm845-2) unstable; urgency=medium
+
+  * d/patches: sync our defconfig with sdm845-mainline
+
+ -- Arnaud Ferraris <aferraris@debian.org>  Mon, 30 Oct 2023 14:32:49 +0100
+
 linux-6.6-sdm845 (6.6+sdm845-1) unstable; urgency=medium
 
   * Initial 6.6 release
