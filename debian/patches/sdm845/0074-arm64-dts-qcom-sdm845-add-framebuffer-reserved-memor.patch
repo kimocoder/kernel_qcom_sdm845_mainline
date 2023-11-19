@@ -66,7 +66,7 @@ index 31b3def..b4ffac4 100644
  			compatible = "ramoops";
  			reg = <0 0xb0000000 0 0x00400000>;
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi b/arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi
-index 7ee61b2..87c069c2 100644
+index 7ee61b2..87c069c 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi
 @@ -88,12 +88,6 @@ vreg_s4a_1p8: pm8998-smps4 {
@@ -116,7 +116,7 @@ index 53cf136..81b0be8 100644
  			compatible = "shared-dma-pool";
  			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 diff --git a/arch/arm64/boot/dts/qcom/sdm850.dtsi b/arch/arm64/boot/dts/qcom/sdm850.dtsi
-index da9f6fbe..b787575 100644
+index da9f6fb..b787575 100644
 --- a/arch/arm64/boot/dts/qcom/sdm850.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm850.dtsi
 @@ -7,6 +7,8 @@

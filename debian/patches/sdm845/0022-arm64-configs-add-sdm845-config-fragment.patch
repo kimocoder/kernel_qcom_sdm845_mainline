@@ -65,7 +65,7 @@ CONFIG_PHY_QCOM_QMP_UFS as builtin
 
 diff --git a/arch/arm64/configs/sdm845.config b/arch/arm64/configs/sdm845.config
 new file mode 100644
-index 00000000..6477bde
+index 0000000..6477bde
 --- /dev/null
 +++ b/arch/arm64/configs/sdm845.config
 @@ -0,0 +1,992 @@
