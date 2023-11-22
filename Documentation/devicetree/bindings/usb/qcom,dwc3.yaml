@@ -94,6 +94,14 @@ properties:
       - const: usb-ddr
       - const: apps-usb
 
+  interconnects:
+    maxItems: 2
+
+  interconnect-names:
+    items:
+      - const: usb-ddr
+      - const: apps-usb
+
   interrupts:
     minItems: 1
     maxItems: 4
